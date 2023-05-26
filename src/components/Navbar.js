@@ -58,6 +58,14 @@ const Button = styled.button`
 
 
 const Navbar = () => {
+
+    const handleClick = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+    };
+
     return (
         <Section>
             <Container>
@@ -66,7 +74,9 @@ const Navbar = () => {
                     <List>
                         <ListItem>Home</ListItem>
                         <ListItem>Works</ListItem>
-                        <ListItem>Contact</ListItem>
+                        <ListItem onClick={handleClick}>
+                            Contact
+                        </ListItem>
                     </List>
                 </Links>
                 <Icons>
@@ -75,8 +85,8 @@ const Navbar = () => {
                 </Icons>
             </Container>
         </Section>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
 

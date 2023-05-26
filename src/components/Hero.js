@@ -13,14 +13,16 @@ const Section = styled.div`
   flex-direction: column;
 `
 const Container = styled.div`
-  width: 1200px;
+  width: 100vw;
   height: 100vh;
+  padding-left:20vw;
+  padding-right: 5vw;
   /* scroll-snap-align: center; */
   display: flex;
   justify-content: space-between;
 `
 const Left = styled.div`
-    padding: 20px 60px;
+    padding: 5vh 8vw;
     flex: 2;
     display: flex;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -63,6 +65,7 @@ const Button = styled.button`
 
 const Right = styled.div`
 display: flex;
+padding: 5vh 8vw;
 align-items: center;
 justify-content: center;
 flex: 3;
@@ -86,6 +89,8 @@ const Img = styled.img`
 
 
 const Hero = () => {
+
+
     return (
         <Section>
             <Navbar />
@@ -93,10 +98,10 @@ const Hero = () => {
                 <Left>
                     <Title>Welcome...</Title>
                     <WhatWeDo>
-                        <Line src="./images/white_line.png" />
-                        <Subtitle>What I do..</Subtitle>
+                        {/* <Line src="./images/white_line.png" /> */}
+                        <Subtitle> -- What I do..</Subtitle>
                     </WhatWeDo>
-                    <Desc>I enjoy creating apps and involved in AI.</Desc>
+                    <Desc>I enjoy creating apps having great visuals and involving AI.</Desc>
                     <Button>Learn More</Button>
                 </Left>
                 <Right>

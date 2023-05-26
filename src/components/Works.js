@@ -1,17 +1,130 @@
-import React from 'react'
-import styled from 'styled-components'
-
-
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 
 const Section = styled.div`
   height: 100vh;
   scroll-snap-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
+`;
+
+const Upper = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 5;
+`;
+
+const Lower = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 5;
+`;
+
+const Card = styled.div`
+  position: relative;
+  margin: 20px;
+  border-radius: 20px;
+  width: 12rem;
+  height: 12rem;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+`;
+
+const Content = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+`;
+
+const Front = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateZ(100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Back = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: rotateY(180deg) translateZ(100px);
+`;
+const CardImg = styled.img`
+  height: 10rem;
+  width: 10rem;
 
 `
-const Works = () => {
-    return (
-        <Section>Works</Section>
-    )
-}
 
-export default Works
+const Works = () => {
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const distortDivs = document.querySelectorAll('.distort');
+      distortDivs.forEach((distortDiv) => {
+        const rect = distortDiv.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const distX = mouseX - centerX;
+        const distY = mouseY - centerY;
+
+        distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${distX / 20}deg)`;
+      });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <Section>
+      <Upper></Upper>
+      <Card className='distort'>
+        <Content>
+        <Front onClick={() => window.location.href = 'https://github.com/vikash18o19/soil-app-frontend'}>
+  <CardImg src='./images/soil app logo.png' alt="Logo" />
+</Front>
+
+          <Back>Back Content</Back>
+        </Content>
+      </Card>
+      <Card className='distort'>
+        <Content>
+          <Front>Front Content</Front>
+          <Back>Back Content</Back>
+        </Content>
+      </Card>
+      <Card className='distort'>
+        <Content>
+          <Front>Front Content</Front>
+          <Back>Back Content</Back>
+        </Content>
+      </Card>
+      <Card className='distort'>
+        <Content>
+          <Front>Front Content</Front>
+          <Back>Back Content</Back>
+        </Content>
+      </Card>
+    <Lower></Lower>
+  </Section>
+  );};
+
+  export default Works;

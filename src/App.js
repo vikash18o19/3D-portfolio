@@ -7,16 +7,16 @@ import Works from "./components/Works";
 
 const Container = styled.div`
   height: 100vh;
-  background-color: rebeccapurple; 
+  width: 100hw;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overflow-y: auto;
-  scrollbar-width: none;
+  overflow-y: auto; // adds an scroll bar when exceeds vertical screen.
   background: url("./images/bg2.jpg");
   background-size: 100%;
   &::-webkit-scrollbar{
     display: none;
   }
+  background-repeat: no-repeat;
 `
 
 function App() {
