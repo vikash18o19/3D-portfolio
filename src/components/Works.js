@@ -29,7 +29,7 @@ const Card = styled.div`
   width: 12rem;
   height: 12rem;
   backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 `;
 
@@ -66,7 +66,13 @@ const Back = styled.div`
 const CardImg = styled.img`
   height: 10rem;
   width: 10rem;
-
+`
+const Heading = styled.h1`
+  margin: 5em;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
 `
 
 const Works = () => {
@@ -95,7 +101,7 @@ const Works = () => {
 
   return (
     <Section>
-      <Upper></Upper>
+      <Upper><Heading>PROJECTS AND WORKS</Heading></Upper>
       <Card className='distort'>
         <Content>
         <Front onClick={() => window.location.href = 'https://github.com/vikash18o19/soil-app-frontend'}>

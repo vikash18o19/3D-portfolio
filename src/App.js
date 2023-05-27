@@ -13,6 +13,7 @@ const Container = styled.div`
   overflow-y: auto; // adds an scroll bar when exceeds vertical screen.
   background: url("./images/bg2.jpg");
   background-size: 100%;
+  
   &::-webkit-scrollbar{
     display: none;
   }

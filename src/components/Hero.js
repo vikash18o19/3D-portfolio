@@ -33,13 +33,13 @@ const Left = styled.div`
 
 `
 const Title = styled.h1`
-font-size: 74px;
-color: white;
+    font-size: 74px;
+    color: white;
 `
 
-const Line = styled.img`
-    width:20px;
-`
+// const Line = styled.img`
+//     width:20px;
+// `
 const WhatWeDo = styled.div`
     display: flex;
     align-items: center;
@@ -64,11 +64,11 @@ const Button = styled.button`
 
 
 const Right = styled.div`
-display: flex;
-padding: 5vh 8vw;
-align-items: center;
-justify-content: center;
-flex: 3;
+    display: flex;
+    padding: 5vh 8vw;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
 `
 const Img = styled.img`
     height: 400px;
