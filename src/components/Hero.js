@@ -19,11 +19,10 @@ const Container = styled.div`
   padding-right: 5vw;
   /* scroll-snap-align: center; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `
 const Left = styled.div`
-    padding: 5vh 6vw;   
-    flex: 2;
+    padding: 5vh 10vw;   
     display: flex;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     flex-direction: column;
@@ -33,7 +32,7 @@ const Left = styled.div`
 
 `
 const Title = styled.h1`
-    font-size: 74px;
+    font-size: 5rem;
     color: white;
 `
 
@@ -67,7 +66,10 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 3;
+    margin-right: 0;
+    @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `
 const Img = styled.img`
     height: 50svh;
