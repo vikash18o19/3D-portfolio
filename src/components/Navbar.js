@@ -2,57 +2,66 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Section = styled.div`
+    width: 100%;
+    margin: 2em auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 `
 const Container = styled.div`
-    width: 1200px;
+    width: 80%;
     /* background-color: rebeccapurple; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
 
 `
 const Logo = styled.img`
     size: 10%;
-    height: 60px;
+    width:10em;
 `
 const Links = styled.div`
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 5%;
 `
 const List = styled.ul`
     display: flex;
-    gap: 20px;
+    gap: 10%;
     list-style: none;
 
 `
 const Icon = styled.img`
-    width: 30px;
+    width: 20%;
     cursor: pointer;
 `
 const Icons = styled.div`
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15%;
 `
 const ListItem = styled.li`
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
+    :hover{
+        color: darkblue;
 
+    }
 `
 const Button = styled.button`
-    width: 100px;
-    padding: 10px;
+    width: 10svw;
+    height: 6svh;
+    font-size: 1em;
     background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
+    :hover{
+        background-color: white;
+        color: black;
+    }
 
 `
 
@@ -80,7 +89,7 @@ const Navbar = () => {
                     </List>
                 </Links>
                 <Icons>
-                    <Icon src="./images/search.png" />
+                    {/* <Icon src="./images/search.png" /> */}
                     <Button>Hire Now</Button>
                 </Icons>
             </Container>

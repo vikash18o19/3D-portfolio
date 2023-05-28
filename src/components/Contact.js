@@ -1,67 +1,128 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import { useEffect, useState, useRef } from 'react';
+import GlassForm from './glassForm';
 
+const useIntersectionObserver = (options) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref, options]);
+
+  return [ref, isVisible];
+};
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 const Section = styled.div`
+  margin: 10vh;
   display: flex;
   width: 100vw;
   height: 100vh;
   scroll-snap-align: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+  animation: ${fadeIn} 1s ease-in;
+`;
 
 const Main = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  height: 60vh;
-  width: 80vw;
+  height: 55vh;
+  width: 10vw;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-`
+  font-family: 'Roboto', sans-serif;
+`;
+const MainRight = styled.div`
+  position: relative;
+  margin-left: 5rem;
+  margin-right: 15rem;
+  border-radius: 20px;
+  height: 80vh;
+  width: 60vw;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+`;
+
 const Card = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  width: 12vw;
-  height: 12vw;
+  width: 7vw;
+  height: 7vw;
   backdrop-filter: blur(5px);
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 
-  :hover{
+  :hover {
     background-color: rgba(255, 255, 255, 0.7);
-    width: 12.1vw;
-    height: 12.1vw;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const CardImg = styled.img`
-  height: 10vw;
-  width: 10vw;
-`
+  height: 6vw;
+  width: 6vw;
+`;
 
 const Contact = () => {
-    return (
-        <Section>
-          <Main>
-            <Card onClick={() => window.location.href = 'https://github.com/vikash18o19'}><CardImg src='./images/github.png'/></Card>
-            <Card><CardImg src='./images/instagram.png'/></Card>
-            <Card><CardImg src='./images/linkedin.png'/></Card>
-          </Main>
-        </Section>
-    )
-}
+  const [sectionRef, isVisible] = useIntersectionObserver({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  });
 
-export default Contact
+  return (
+    <Section ref={sectionRef} style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease-in' }}>
+      <Main>
+        <Card onClick={() => window.location.href = 'https://github.com/vikash18o19'}><CardImg src='./images/github.png' /></Card>
+        <Card><CardImg src='./images/instagram.png' /></Card>
+        <Card><CardImg src='./images/linkedin.png' /></Card>
+      </Main>
+      <MainRight>
+        <GlassForm/>
+      </MainRight>
+    </Section>
+  );
+};
+
+
+export default Contact;

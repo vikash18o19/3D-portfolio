@@ -22,14 +22,14 @@ const Container = styled.div`
   justify-content: space-between;
 `
 const Left = styled.div`
-    padding: 5vh 8vw;
+    padding: 5vh 6vw;   
     flex: 2;
     display: flex;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     flex-direction: column;
     /* align-items: center; */
     justify-content: center;
-    gap: 20px;
+    gap: 5svh;
 
 `
 const Title = styled.h1`
@@ -65,14 +65,13 @@ const Button = styled.button`
 
 const Right = styled.div`
     display: flex;
-    padding: 5vh 8vw;
     align-items: center;
     justify-content: center;
     flex: 3;
 `
 const Img = styled.img`
-    height: 400px;
-    width: 600px;
+    height: 50svh;
+    width: 60svw;
     object-fit: contain;
     animation: animate 3s infinite ease alternate;
 

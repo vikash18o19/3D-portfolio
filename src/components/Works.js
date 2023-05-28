@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  * {
+    scroll-behavior: smooth;
+  }
+`;
 
 const Section = styled.div`
   height: 100vh;
@@ -31,6 +39,7 @@ const Card = styled.div`
   backdrop-filter: blur(5px);
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  transition: transform 0.5s;
 `;
 
 const Content = styled.div`
@@ -63,17 +72,26 @@ const Back = styled.div`
   backface-visibility: hidden;
   transform: rotateY(180deg) translateZ(100px);
 `;
+
 const CardImg = styled.img`
   height: 10rem;
   width: 10rem;
-`
+`;
+
+
 const Heading = styled.h1`
-  margin: 5em;
-  font-size: 2.5rem;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  font-size: 4rem;
   font-weight: bold;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-`
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  backdrop-filter: blur(5px);
+  color: rgba(0, 0, 0, 0.6);
+  @media only screen and (max-width: 768px) {
+    font-size: 60px;
+  }
+
+`;
 
 const Works = () => {
   useEffect(() => {
@@ -100,37 +118,42 @@ const Works = () => {
   }, []);
 
   return (
-    <Section>
-      <Upper><Heading>PROJECTS AND WORKS</Heading></Upper>
-      <Card className='distort'>
-        <Content>
-        <Front onClick={() => window.location.href = 'https://github.com/vikash18o19/soil-app-frontend'}>
-  <CardImg src='./images/soil app logo.png' alt="Logo" />
-</Front>
+    <>
+      <GlobalStyle />
+      <Section>
+        <Upper>
+          <Heading>PROJECTS AND WORKS</Heading>
+        </Upper>
+        <Card className='distort'>
+          <Content>
+            <Front onClick={() => window.location.href = 'https://github.com/vikash18o19/soil-app-frontend'}>
+              <CardImg src='./images/soil app logo.png' alt="Logo" />
+            </Front>
+            <Back>Back Content</Back>
+          </Content>
+        </Card>
+        <Card className='distort'>
+          <Content>
+            <Front>Front Content</Front>
+            <Back>Back Content</Back>
+          </Content>
+        </Card>
+        <Card className='distort'>
+          <Content>
+            <Front>Front Content</Front>
+            <Back>Back Content</Back>
+          </Content>
+        </Card>
+        <Card className='distort'>
+          <Content>
+            <Front>Front Content</Front>
+            <Back>Back Content</Back>
+          </Content>
+        </Card>
+        <Lower></Lower>
+      </Section>
+    </>
+  );
+};
 
-          <Back>Back Content</Back>
-        </Content>
-      </Card>
-      <Card className='distort'>
-        <Content>
-          <Front>Front Content</Front>
-          <Back>Back Content</Back>
-        </Content>
-      </Card>
-      <Card className='distort'>
-        <Content>
-          <Front>Front Content</Front>
-          <Back>Back Content</Back>
-        </Content>
-      </Card>
-      <Card className='distort'>
-        <Content>
-          <Front>Front Content</Front>
-          <Back>Back Content</Back>
-        </Content>
-      </Card>
-    <Lower></Lower>
-  </Section>
-  );};
-
-  export default Works;
+export default Works;
