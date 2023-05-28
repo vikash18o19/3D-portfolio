@@ -34,8 +34,8 @@ const Card = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  width: 12rem;
-  height: 12rem;
+  width: 15svw;
+  height: 15svw;
   backdrop-filter: blur(5px);
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
@@ -74,8 +74,8 @@ const Back = styled.div`
 `;
 
 const CardImg = styled.img`
-  height: 10rem;
-  width: 10rem;
+  height: 12svw;
+  width: 12svw;
 `;
 
 
