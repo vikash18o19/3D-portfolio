@@ -51,7 +51,7 @@ const Main = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  height: 55vh;
+  height: 40vw;
   width: 10vw;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.3);
