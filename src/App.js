@@ -3,7 +3,7 @@ import Contact from "./components/Contact";
 import Hero from "./components/Hero";
 import Who from "./components/Who";
 import Works from "./components/Works";
-
+import React,{useRef} from "react";
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -25,11 +25,21 @@ const Container = styled.div`
 `;
 
 function App() {
+
+  const containerRef = useRef(null);
+
+  const scrollToThirdSnap = () => {
+    const container = containerRef.current;
+    const snapElements = container.getElementsByClassName('snap-element');
+    const thirdSnap = snapElements[2];
+
+    thirdSnap.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <Container>
-      <Hero />
+      <Hero func = {scrollToThirdSnap}/>
       <Who />
-      <Works />
+      <Works ref={containerRef} />
       <Contact />
     </Container>
   );

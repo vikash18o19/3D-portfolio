@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
+import LoadingSpinner from "./Spinner";
 
 const FormContainer = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ const FormContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   width: 60%;
+  height: 70%;
 `;
 
 const FormHeading = styled.h2`
@@ -60,33 +62,107 @@ const FormButton = styled.button`
 `;
 
 const GlassForm = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-  };
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResponse(null);
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log("to send: ", formData);
+    try {
+      const response = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log(response);
+      const responseData = await response.json();
+      if (response.status == 200) {
+        setResponse("message sent");
+      } else {
+        setResponse("error while sending mail to vikash.18.dev@gmail.com");
+      }
+      handleAfterSubmit();
+      setLoading(false);
+    } catch (error) {
+      handleAfterSubmit();
+      console.error("Error:", error);
+      setLoading(false);
+    }
+  };
+  const handleAfterSubmit = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+    setNumber("");
+    setTimeout(() => {
+      setResponse(null);
+    }, 5000);
+  };
   return (
     <FormContainer>
       <FormHeading>Contact Me 👇</FormHeading>
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <FormLabel>Name</FormLabel>
-          <FormInput type="text" name="name" required />
+          <FormInput
+            value={name}
+            type="text"
+            name="name"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </FormGroup>
         <FormGroup>
           <FormLabel>Email</FormLabel>
-          <FormInput type="email" name="email" required />
+          <FormInput
+            value={email}
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </FormGroup>
         <FormGroup>
           <FormLabel>Contact No</FormLabel>
-          <FormInput type="tel" name="contact" required />
+          <FormInput
+            value={number}
+            type="tel"
+            name="number"
+            onChange={(e) => setNumber(e.target.value)}
+            required
+          />
         </FormGroup>
         <FormGroup>
           <FormLabel>Message</FormLabel>
-          <FormInput as="textarea" name="message" rows="4" required />
+          <FormInput
+            value={message}
+            as="textarea"
+            name="message"
+            onChange={(e) => setMessage(e.target.value)}
+            rows="4"
+            required
+          />
         </FormGroup>
-        <FormButton type="submit">Send</FormButton>
+        <FormButton type="submit">
+          {loading ? <LoadingSpinner /> : "Send"}
+        </FormButton>
       </form>
+      {response && (
+        <div>
+          <h3>{response}</h3>
+        </div>
+      )}
     </FormContainer>
   );
 };

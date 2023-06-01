@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { motion } from 'framer-motion'
 const Section = styled.div`
-    width: 100%;
+    width: 90svw;
     margin: 2em auto;
     display: flex;
     justify-content: center;
@@ -69,13 +69,20 @@ const Button = styled.button`
 const Navbar = () => {
 
     const handleClick = () => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth',
-          });
+        console.log("works clicked")
     };
 
     return (
+        <motion.div
+        initial={{opacity:0, y:-180}}
+        animate={{opacity:1, y:0}}
+        transition={{
+            ease:'easeInOut',
+            duration:1,
+            delay:0.6,
+
+
+        }}>
         <Section>
             <Container>
                 <Links>
@@ -94,6 +101,7 @@ const Navbar = () => {
                 </Icons>
             </Container>
         </Section>
+        </motion.div>
     );
 };
 
