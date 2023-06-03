@@ -72,6 +72,7 @@ const GlassForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e);
     setLoading(true);
     setResponse(null);
     const formData = new FormData(e.target);
@@ -86,8 +87,7 @@ const GlassForm = () => {
         body: JSON.stringify(data),
       });
       console.log(response);
-      const responseData = await response.json();
-      if (response.status == 200) {
+      if (response.status === 200) {
         setResponse("message sent");
       } else {
         setResponse("error while sending mail to vikash.18.dev@gmail.com");
@@ -119,7 +119,10 @@ const GlassForm = () => {
             value={name}
             type="text"
             name="name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              console.log(e);
+            }}
             required
           />
         </FormGroup>
