@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Section = styled.div`
   height: 100vh;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   display: flex;
   align-items: center;
   justify-content: space-between;

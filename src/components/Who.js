@@ -6,7 +6,7 @@ import Cube from "./Cube";
 
 const Section = styled.div`
   height: 100vh;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   display: flex;
   justify-content: center;
 `;
@@ -35,7 +35,7 @@ const Title = styled.h1`
 
 const Right = styled.div`
   color: grey;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   flex: 1;
   display: flex;
   flex-direction: column;

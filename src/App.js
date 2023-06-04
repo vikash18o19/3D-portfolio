@@ -6,7 +6,7 @@ import Works from "./components/Works";
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
   overflow-y: auto; // adds a scroll bar when exceeding the vertical screen.
   /* background: url("./images/bg2.jpg"); */

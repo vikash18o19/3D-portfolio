@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Section = styled.div`
   height: 100vh;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr 1fr;
@@ -78,33 +78,29 @@ const CardImg = styled.img`
   width: 12svw;
 `;
 
-
 const Heading = styled.h1`
   padding: 1rem;
   margin-top: 3em;
   margin-bottom: 1em;
   font-size: 4rem;
   font-weight: bold;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   backdrop-filter: blur(100px);
   color: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   /* background: linear-gradient(to bottom, rgba(100, 240, 255, 0.6), rgba(255, 255, 255, 0.2)); */
-  background-color:  rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   @media only screen and (max-width: 768px) {
     font-size: 60px;
   }
-
 `;
 const CardHeading = styled.h2`
-
   font-size: 2rem;
   font-weight: bold;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
 
 const Works = () => {
-
   const [isHovered, setIsHovered] = useState(0);
 
   const handleHover = (num) => {
@@ -117,7 +113,7 @@ const Works = () => {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const distortDivs = document.querySelectorAll('.distort');
+      const distortDivs = document.querySelectorAll(".distort");
       distortDivs.forEach((distortDiv) => {
         const rect = distortDiv.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
@@ -127,14 +123,16 @@ const Works = () => {
         const distX = mouseX - centerX;
         const distY = mouseY - centerY;
 
-        distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${distX / 20}deg)`;
+        distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${
+          distX / 20
+        }deg)`;
       });
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -145,40 +143,75 @@ const Works = () => {
         <Upper>
           <Heading>PROJECTS AND WORKS</Heading>
         </Upper>
-        <Card className='distort'>
+        <Card className="distort">
           <Content>
-            <Front onMouseEnter={()=>handleHover(1)}//always have to pass a ref not call directly.
-                onMouseLeave={handleLeave} 
-                onClick={()=>window.location.href='https://github.com/vikash18o19/soil-app-frontend'}>
-                  {isHovered===1 ?  <CardImg src='./images/app.png' alt="Logo" />  : <CardImg src='./images/soil app logo.png' alt="Logo" />}
-            </Front>
-            
-          </Content>
-        </Card>
-        <Card className='distort'>
-          <Content>
-            <Front onMouseEnter={()=>handleHover(2)}//always have to pass a ref not call directly.
-                onMouseLeave={handleLeave} 
-                onClick={()=>window.location.href='https://github.com/vikash18o19/Traffic_sign_recognition'}>
-                  {isHovered===2 ? <CardImg src='./images/Traffic.png' alt="Logo" /> : <CardImg src='./images/NeuralNet.png' alt="Logo" />}
-            </Front>
-          </Content>
-        </Card>
-        <Card className='distort'>
-          <Content>
-          <Front onMouseEnter={()=>handleHover(3)}//always have to pass a ref not call directly.
-                onMouseLeave={handleLeave} 
-                onClick={()=>window.location.href='https://github.com/vikash18o19/Finger_Painter'}>
-                  {isHovered===3 ? <CardImg src='./images/finger.png' alt="Logo" /> : <CardImg src='./images/painter.png' alt="Logo" />}
+            <Front
+              onMouseEnter={() => handleHover(1)} //always have to pass a ref not call directly.
+              onMouseLeave={handleLeave}
+              onClick={() =>
+                (window.location.href =
+                  "https://github.com/vikash18o19/soil-app-frontend")
+              }
+            >
+              {isHovered === 1 ? (
+                <CardImg src="./images/app.png" alt="Logo" />
+              ) : (
+                <CardImg src="./images/soil app logo.png" alt="Logo" />
+              )}
             </Front>
           </Content>
         </Card>
-        <Card className='distort'>
+        <Card className="distort">
           <Content>
-          <Front onMouseEnter={()=>handleHover(4)}//always have to pass a ref not call directly.
-                onMouseLeave={handleLeave} 
-                onClick={()=>window.location.href='https://github.com/vikash18o19/Soil-GAN'}>
-                  {isHovered===4 ?  <CardImg src='./images/GanModel.png'alt="Logo" /> : <CardImg src='./images/GAN.png' alt="Logo" />}
+            <Front
+              onMouseEnter={() => handleHover(2)} //always have to pass a ref not call directly.
+              onMouseLeave={handleLeave}
+              onClick={() =>
+                (window.location.href =
+                  "https://github.com/vikash18o19/Traffic_sign_recognition")
+              }
+            >
+              {isHovered === 2 ? (
+                <CardImg src="./images/Traffic.png" alt="Logo" />
+              ) : (
+                <CardImg src="./images/NeuralNet.png" alt="Logo" />
+              )}
+            </Front>
+          </Content>
+        </Card>
+        <Card className="distort">
+          <Content>
+            <Front
+              onMouseEnter={() => handleHover(3)} //always have to pass a ref not call directly.
+              onMouseLeave={handleLeave}
+              onClick={() =>
+                (window.location.href =
+                  "https://github.com/vikash18o19/Finger_Painter")
+              }
+            >
+              {isHovered === 3 ? (
+                <CardImg src="./images/finger.png" alt="Logo" />
+              ) : (
+                <CardImg src="./images/painter.png" alt="Logo" />
+              )}
+            </Front>
+          </Content>
+        </Card>
+        <Card className="distort">
+          <Content>
+            <Front
+              onMouseEnter={() => handleHover(4)} //always have to pass a ref not call directly.
+              onMouseLeave={handleLeave}
+              onClick={() =>
+                (window.location.href =
+                  "https://github.com/vikash18o19/Soil-GAN")
+              }
+            >
+              {isHovered === 4 ? (
+                <CardImg src="./images/GanModel.png" alt="Logo" />
+              ) : (
+                <CardImg src="./images/GAN.png" alt="Logo" />
+              )}
             </Front>
           </Content>
         </Card>

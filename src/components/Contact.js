@@ -1,7 +1,7 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { useEffect, useState, useRef } from 'react';
-import GlassForm from './glassForm';
+import React from "react";
+import styled, { keyframes } from "styled-components";
+import { useEffect, useState, useRef } from "react";
+import GlassForm from "./glassForm";
 
 const useIntersectionObserver = (options) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,7 +39,7 @@ const Section = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
-  scroll-snap-align: center;
+  /* scroll-snap-align: center; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -58,7 +58,7 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 `;
 const MainRight = styled.div`
   position: relative;
@@ -75,7 +75,7 @@ const MainRight = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Card = styled.div`
@@ -107,23 +107,35 @@ const CardImg = styled.img`
 const Contact = () => {
   const [sectionRef, isVisible] = useIntersectionObserver({
     root: null,
-    rootMargin: '0px',
+    rootMargin: "0px",
     threshold: 0.1,
   });
 
   return (
-    <Section ref={sectionRef} style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease-in' }}>
+    <Section
+      ref={sectionRef}
+      style={{ opacity: isVisible ? 1 : 0, transition: "opacity 1s ease-in" }}
+    >
       <Main>
-        <Card onClick={() => window.location.href = 'https://github.com/vikash18o19'}><CardImg src='./images/github.png' /></Card>
-        <Card><CardImg src='./images/instagram.png' /></Card>
-        <Card><CardImg src='./images/linkedin.png' /></Card>
+        <Card
+          onClick={() =>
+            (window.location.href = "https://github.com/vikash18o19")
+          }
+        >
+          <CardImg src="./images/github.png" />
+        </Card>
+        <Card>
+          <CardImg src="./images/instagram.png" />
+        </Card>
+        <Card>
+          <CardImg src="./images/linkedin.png" />
+        </Card>
       </Main>
       <MainRight>
-        <GlassForm/>
+        <GlassForm />
       </MainRight>
     </Section>
   );
 };
-
 
 export default Contact;
