@@ -32,7 +32,7 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 5rem;
+  font-size: 8vw;
 `;
 
 const WhatWeDo = styled(motion.div)`
@@ -44,7 +44,7 @@ const WhatWeDo = styled(motion.div)`
 const Subtitle = styled.h2``;
 
 const Desc = styled(motion.p)`
-  font-size: 25px;
+  font-size: 5vw;
 `;
 
 const Button = styled.button`
@@ -82,17 +82,20 @@ const Hero = () => {
   useEffect(() => {
     setCurrentProgressColor(
       currentPercent >= 90
-        ? "#CDFF00"
+        ? "black"
         : currentPercent >= 45
         ? "#31A9D5"
         : currentPercent >= 20
-        ? "#F2BD1D"
-        : "#FF3B77"
+        ? "#FF3B77"
+        : "white"
     );
   }, [currentPercent]);
 
   return (
-    <Section ref={HeroRef}>
+    <Section
+      ref={HeroRef}
+      style={{ backgroundColor: `${currentPercent < 100 ? "black" : "white"}` }}
+    >
       <Container
         style={{
           position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
@@ -116,6 +119,17 @@ const Hero = () => {
           </Desc>
           {/* <Button>Learn More</Button> */}
         </Left>
+        <motion.div
+          style={{
+            position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
+            bottom: "0px",
+            left: "0px",
+            height: "100vh",
+            backgroundColor: "white",
+            width: `${currentPercent}vw`,
+            zIndex: -1,
+          }}
+        ></motion.div>
       </Container>
     </Section>
   );
