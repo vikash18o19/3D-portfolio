@@ -65,10 +65,9 @@ const MainRight = styled.div`
   margin-left: 5rem;
   margin-right: 5rem;
   border-radius: 20px;
-  /* height: 80vh; */
   padding-top: 5em;
   padding-bottom: 5em;
-  width: 60vw;
+  width: 50vw;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;

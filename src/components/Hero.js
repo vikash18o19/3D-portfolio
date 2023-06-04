@@ -1,57 +1,52 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import Navbar from "./Navbar";
-
-const Section = styled.div`
-  height: 100vh;
-  /* scroll-snap-align: center; */
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+const Section = styled(motion.div)`
+  height: 400vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  position: relative;
 `;
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  /* scroll-snap-align: center; */
+
+const Container = styled(motion.div)`
+  padding-top: 5vh;
   display: flex;
   justify-content: center;
 `;
+
 const Left = styled.div`
-  /* padding-right: 5svw; */
-  width: 40svw;
+  width: 40vw;
   display: flex;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
-  gap: 5svh;
-  @media only screen and (max-width: 768px) {
-    /* padding-left: initial; */
-  }
-`;
-const Title = styled.h1`
-  font-size: 5rem;
-  color: white;
+  gap: 5vh;
 `;
 
-// const Line = styled.img`
-//     width:20px;
-// `
-const WhatWeDo = styled.div`
+const Title = styled.h1`
+  font-size: 5rem;
+`;
+
+const WhatWeDo = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
 `;
-const Subtitle = styled.h2`
-  font-size: 35px;
-  color: white;
-`;
-const Desc = styled.p`
-  color: white;
+
+const Subtitle = styled.h2``;
+
+const Desc = styled(motion.p)`
   font-size: 25px;
 `;
+
 const Button = styled.button`
   cursor: pointer;
   border: none;
@@ -60,43 +55,66 @@ const Button = styled.button`
   height: 30px;
 `;
 
-const Right = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-const Img = styled.img`
-  height: 50svh;
-  width: 20svw;
-  object-fit: contain;
-  animation: animate 3s infinite ease alternate;
+const Hero = () => {
+  const [currentPercent, setCurrentPercent] = useState(null);
+  const [currentProgressColor, setCurrentProgressColor] = useState(null);
 
-  @keyframes animate {
-    100% {
-      transform: translateY(20px);
-    }
-  }
-`;
+  const HeroRef = useRef(null);
 
-const Hero = (props) => {
+  const { scrollYProgress } = useScroll({
+    target: HeroRef,
+  });
+  const pathLength = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 90,
+  });
+  const yRange = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  useEffect(
+    () =>
+      yRange.onChange((v) => {
+        setCurrentPercent(Math.trunc(v));
+      }),
+    [yRange]
+  );
+  console.log(currentPercent);
+  console.log(currentProgressColor);
+  useEffect(() => {
+    setCurrentProgressColor(
+      currentPercent >= 90
+        ? "#CDFF00"
+        : currentPercent >= 45
+        ? "#31A9D5"
+        : currentPercent >= 20
+        ? "#F2BD1D"
+        : "#FF3B77"
+    );
+  }, [currentPercent]);
+
   return (
-    <Section>
-      {/* <Navbar /> */}
-      <Container>
+    <Section ref={HeroRef}>
+      <Container
+        style={{
+          position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
+          bottom: "30vh",
+          left: "30vw",
+          opacity: pathLength + 0.1,
+          color: currentProgressColor,
+        }}
+      >
         <Left>
           <Title>Welcome...</Title>
-          <WhatWeDo>
-            {/* <Line src="./images/white_line.png" /> */}
-            <Subtitle> -- What I do..</Subtitle>
-          </WhatWeDo>
-          <Desc>
-            I enjoy creating apps having great visuals and involving AI.
+          {/* <WhatWeDo
+            style={{
+              fontSize: `50px`,
+            }}
+          >
+            <Subtitle>-- What I do..</Subtitle>
+          </WhatWeDo> */}
+          <Desc style={{ opacity: pathLength }}>
+            I enjoy creating apps with great visuals and involving AI.
           </Desc>
-          <Button>Learn More</Button>
+          {/* <Button>Learn More</Button> */}
         </Left>
       </Container>
     </Section>

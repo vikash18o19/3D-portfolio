@@ -89,7 +89,7 @@ const Heading = styled.h1`
   color: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   /* background: linear-gradient(to bottom, rgba(100, 240, 255, 0.6), rgba(255, 255, 255, 0.2)); */
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
   @media only screen and (max-width: 768px) {
     font-size: 60px;
   }

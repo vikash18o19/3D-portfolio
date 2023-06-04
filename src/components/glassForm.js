@@ -12,7 +12,7 @@ const FormContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   width: 60%;
-  height: 70%;
+  height: 50%;
 `;
 
 const FormHeading = styled.h2`
