@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const Section = styled(motion.div)`
   height: 400vh;
   display: flex;
@@ -65,8 +59,8 @@ const Hero = () => {
     target: HeroRef,
   });
   const pathLength = useSpring(scrollYProgress, {
-    stiffness: 400,
-    damping: 90,
+    stiffness: 800,
+    damping: 30,
   });
   const yRange = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
@@ -77,8 +71,8 @@ const Hero = () => {
       }),
     [yRange]
   );
-  console.log(currentPercent);
-  console.log(currentProgressColor);
+  // console.log(currentPercent);
+  // console.log(currentProgressColor);
   useEffect(() => {
     setCurrentProgressColor(
       currentPercent >= 90
