@@ -50,12 +50,12 @@ const Main = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  height: 40vw;
-  width: 10vw;
+  height: 10vw;
+  width: 30vw;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
@@ -123,16 +123,25 @@ const Contact = () => {
         >
           <CardImg src="./images/github.png" />
         </Card>
-        <Card>
+        <Card
+          onClick={() =>
+            (window.location.href = "https://www.instagram.com/_vikash_18_/")
+          }
+        >
           <CardImg src="./images/instagram.png" />
         </Card>
-        <Card>
+        <Card
+          onClick={() =>
+            (window.location.href =
+              "https://www.linkedin.com/in/vikash-kumar-156675227")
+          }
+        >
           <CardImg src="./images/linkedin.png" />
         </Card>
       </Main>
-      <MainRight>
+      {/* <MainRight>
         <GlassForm />
-      </MainRight>
+      </MainRight> */}
     </Section>
   );
 };

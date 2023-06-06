@@ -1,8 +1,8 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import Cube from "./Cube";
+// import { OrbitControls } from "@react-three/drei";
+// import { Canvas } from "@react-three/fiber";
+// import Cube from "./Cube";
 
 import {
   motion,
@@ -16,28 +16,25 @@ const Section = styled(motion.div)`
   height: 400vh;
   /* scroll-snap-align: center; */
   display: flex;
-  justify-content: center;
   position: relative;
 `;
 
 const Container = styled(motion.div)`
-  height: 100vh;
-  scroll-snap-align: center;
-  width: 1400px;
-  display: flex;
-  justify-content: space-between;
+  width: 100vw;
 `;
 
 const Left = styled.div`
-  flex: 1;
+  /* flex: 1;
 
   @media only screen and (max-width: 768px) {
     display: none;
     width: 400;
-  }
+  } */
 `;
 
 const Title = styled.h1`
+  padding: 5vw;
+  text-align: center;
   font-size: 74px;
   @media only screen and (max-width: 768px) {
     font-size: 30px;
@@ -59,8 +56,7 @@ const Right = styled.div`
 `;
 
 const WhatWeDo = styled.div`
-  display: flex;
-  align-items: center;
+  text-align: center;
   gap: 10px;
 `;
 
@@ -74,6 +70,7 @@ const Subtitle = styled.h2`
 
 const Desc = styled(motion.p)`
   font-size: 24px;
+  text-align: center;
 `;
 
 const Button = styled.button`
@@ -130,24 +127,24 @@ const Who = () => {
     >
       <Container
         style={{
-          bottom: "10vh",
+          bottom: "30vh",
           position: `${Percent >= 0.1 && Percent < 100 ? "fixed" : "absolute"}`,
         }}
       >
         <Left>
-          <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
+          {/* <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
             <Suspense fallback={null}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[3, 2, 1]} />
               <Cube />
               <OrbitControls enableZoom={false} autoRotate />
             </Suspense>
-          </Canvas>
+          </Canvas> */}
+          TechStack
         </Left>
         <Right>
           <Title>Think outside the square space</Title>
           <WhatWeDo>
-            <Line src="./images/white_line.png" />
             <Subtitle>Who am I?</Subtitle>
           </WhatWeDo>
           <Desc
@@ -160,7 +157,7 @@ const Who = () => {
             <br />
             technology and innovation.
           </Desc>
-          <Button>See our works</Button>
+          {/* <Button>See our works</Button> */}
         </Right>
         <motion.div
           style={{

@@ -100,7 +100,7 @@ const Hero = () => {
         }}
       >
         <Left>
-          <Title>Welcome...</Title>
+          <Title>Welcome</Title>
           {/* <WhatWeDo
             style={{
               fontSize: `50px`,
