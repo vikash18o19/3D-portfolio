@@ -20,7 +20,7 @@ const Section = styled(motion.div)`
 `;
 
 const Container = styled(motion.div)`
-  background-color: green;
+  /* background-color: green; */
   width: 100vw;
   display: flex;
 `;
@@ -33,12 +33,18 @@ const Left = styled.div`
     width: 400;
   } */
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 `;
 
 const Title = styled.h1`
   padding: 5vw;
   text-align: center;
-  font-size: 74px;
+  font-size: 5vhpx;
+  color: grey;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   @media only screen and (max-width: 768px) {
     font-size: 30px;
   }
@@ -46,7 +52,7 @@ const Title = styled.h1`
 
 const Right = styled.div`
   width: 50%;
-  background-color: red;
+  /* background-color: red; */
   color: grey;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   flex: 1;
@@ -71,6 +77,11 @@ const Line = styled.img`
 
 const Subtitle = styled.h2`
   color: #da4ea2;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+`;
+const Techstack = styled.h2`
+  color: darkgrey;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
 
 const Desc = styled(motion.p)`
@@ -132,11 +143,20 @@ const Who = () => {
     >
       <Container
         style={{
-          bottom: "30vh",
+          bottom: "20vh",
           position: `${Percent >= 0.1 && Percent < 100 ? "fixed" : "absolute"}`,
         }}
       >
-        <Left>TechStack</Left>
+        <Left>
+          <Title>What I usually work with ?</Title>
+          <Techstack>HTML</Techstack>
+          <Techstack>CSS</Techstack>
+          <Techstack>JAVASCRIPT</Techstack>
+          <Techstack>REACT</Techstack>
+          <Techstack>FLUTTER</Techstack>
+          <Techstack>NODE JS</Techstack>
+          <Techstack>MONGODB</Techstack>
+        </Left>
         <Right>
           <Title>Think outside the square space</Title>
           <WhatWeDo>
