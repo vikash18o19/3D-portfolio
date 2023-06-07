@@ -20,7 +20,9 @@ const Section = styled(motion.div)`
 `;
 
 const Container = styled(motion.div)`
+  background-color: green;
   width: 100vw;
+  display: flex;
 `;
 
 const Left = styled.div`
@@ -30,6 +32,7 @@ const Left = styled.div`
     display: none;
     width: 400;
   } */
+  width: 50%;
 `;
 
 const Title = styled.h1`
@@ -42,6 +45,8 @@ const Title = styled.h1`
 `;
 
 const Right = styled.div`
+  width: 50%;
+  background-color: red;
   color: grey;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   flex: 1;
@@ -131,17 +136,7 @@ const Who = () => {
           position: `${Percent >= 0.1 && Percent < 100 ? "fixed" : "absolute"}`,
         }}
       >
-        <Left>
-          {/* <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
-            <Suspense fallback={null}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[3, 2, 1]} />
-              <Cube />
-              <OrbitControls enableZoom={false} autoRotate />
-            </Suspense>
-          </Canvas> */}
-          TechStack
-        </Left>
+        <Left>TechStack</Left>
         <Right>
           <Title>Think outside the square space</Title>
           <WhatWeDo>
@@ -150,14 +145,12 @@ const Who = () => {
           <Desc
             style={{
               opacity: pathLength,
-              // color: currentProgressColor,
             }}
           >
             A tech enthusiast who believes in
             <br />
             technology and innovation.
           </Desc>
-          {/* <Button>See our works</Button> */}
         </Right>
         <motion.div
           style={{
