@@ -97,7 +97,8 @@ const Hero = () => {
         style={{
           position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
           bottom: "30vh",
-          left: "30vw",
+          left: "0",
+          paddingLeft: "30vw",
           opacity: pathLength + 0.1,
           color: currentProgressColor,
         }}
@@ -119,7 +120,7 @@ const Hero = () => {
         <motion.div
           style={{
             position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
-            bottom: "0px",
+            top: "0px",
             left: "0px",
             height: "100vh",
             backgroundColor: "white",

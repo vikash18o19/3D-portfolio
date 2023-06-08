@@ -61,6 +61,7 @@ const Right = styled.div`
   justify-content: center;
   gap: 20px;
   @media only screen and (max-width: 768px) {
+    padding-right: 5vw;
     align-items: center;
     text-align: center;
   }
@@ -171,7 +172,7 @@ const Who = () => {
             <Img src="./images/Basketball.png" />
             <Img src="./images/Coffee.png" />
           </ImgRow>
-          <Title>Think outside the square space</Title>
+          <Title>Dribble & Drink</Title>
           <WhatWeDo>
             <Subtitle>Who am I?</Subtitle>
           </WhatWeDo>
@@ -180,9 +181,11 @@ const Who = () => {
               opacity: pathLength,
             }}
           >
-            A tech enthusiast who believes in
+            Hey There, Vikash this side.
             <br />
-            technology and innovation.
+            I am a full stack developer who loves to
+            <br />
+            drink coffee and dribble.
           </Desc>
         </Right>
         <motion.div
