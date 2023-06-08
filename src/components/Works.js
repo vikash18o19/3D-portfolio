@@ -12,22 +12,39 @@ const GlobalStyle = createGlobalStyle`
 const Section = styled.div`
   height: 100vh;
   /* scroll-snap-align: center; */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+`;
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-items: center;
   margin-left: 10vw;
   margin-right: 10vw;
-`;
-
+`
 const Upper = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 5;
+  align-self: center;
 `;
 
 const Lower = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 5;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+const Row1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+`;
+const Row2 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 `;
 
 const Card = styled.div`
@@ -40,6 +57,10 @@ const Card = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: transform 0.5s;
+  @media only screen and (max-width: 900px) {
+    width: 25vw;
+    height: 25vw;
+  }
 `;
 
 const Content = styled.div`
@@ -74,24 +95,25 @@ const Back = styled.div`
 `;
 
 const CardImg = styled.img`
-  height: 12svw;
-  width: 12svw;
+  height: 80%;
+  width: 80%;
 `;
 
 const Heading = styled.h1`
+text-align: center;
   padding: 1rem;
   margin-top: 3em;
   margin-bottom: 1em;
-  font-size: 4rem;
+  font-size: 5vw;
   font-weight: bold;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  backdrop-filter: blur(100px);
-  color: rgba(0, 0, 0, 0.3);
+  /* backdrop-filter: blur(100px); */
+  color: white;
   border-radius: 15px;
   /* background: linear-gradient(to bottom, rgba(100, 240, 255, 0.6), rgba(255, 255, 255, 0.2)); */
-  background-color: rgba(255, 255, 255, 0.6);
-  @media only screen and (max-width: 768px) {
-    font-size: 60px;
+  /* background-color: rgba(255, 255, 255, 0.6); */
+  @media only screen and (max-width: 900px) {
+    font-size: 8vw;
   }
 `;
 const CardHeading = styled.h2`
@@ -140,9 +162,12 @@ const Works = () => {
     <>
       <GlobalStyle />
       <Section>
+      <MainContainer>
         <Upper>
           <Heading>PROJECTS AND WORKS</Heading>
         </Upper>
+        <Lower>
+          <Row1>
         <Card className="distort">
           <Content>
             <Front
@@ -179,6 +204,8 @@ const Works = () => {
             </Front>
           </Content>
         </Card>
+        </Row1>
+        <Row2>
         <Card className="distort">
           <Content>
             <Front
@@ -215,7 +242,9 @@ const Works = () => {
             </Front>
           </Content>
         </Card>
-        <Lower></Lower>
+        </Row2>
+        </Lower>
+      </MainContainer>
       </Section>
     </>
   );
