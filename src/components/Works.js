@@ -111,30 +111,30 @@ const Works = () => {
     setIsHovered(0);
   };
 
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      const distortDivs = document.querySelectorAll(".distort");
-      distortDivs.forEach((distortDiv) => {
-        const rect = distortDiv.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const distX = mouseX - centerX;
-        const distY = mouseY - centerY;
+  // useEffect(() => {
+  //   const handleMouseMove = (event) => {
+  //     const distortDivs = document.querySelectorAll(".distort");
+  //     distortDivs.forEach((distortDiv) => {
+  //       const rect = distortDiv.getBoundingClientRect();
+  //       const mouseX = event.clientX - rect.left;
+  //       const mouseY = event.clientY - rect.top;
+  //       const centerX = rect.width / 2;
+  //       const centerY = rect.height / 2;
+  //       const distX = mouseX - centerX;
+  //       const distY = mouseY - centerY;
 
-        distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${
-          distX / 20
-        }deg)`;
-      });
-    };
+  //       distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${
+  //         distX / 20
+  //       }deg)`;
+  //     });
+  //   };
 
-    document.addEventListener("mousemove", handleMouseMove);
+  //   document.addEventListener("mousemove", handleMouseMove);
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("mousemove", handleMouseMove);
+  //   };
+  // }, []);
 
   return (
     <>
