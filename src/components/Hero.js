@@ -27,6 +27,7 @@ const Left = styled.div`
 
 const Title = styled.h1`
   font-size: 8vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
 
 const WhatWeDo = styled(motion.div)`

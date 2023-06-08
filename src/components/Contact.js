@@ -35,6 +35,16 @@ const fadeIn = keyframes`
   }
 `;
 
+const Title = styled.h1`
+  @media only screen and (max-width: 900px) {
+    font-size: 8vw;
+  }
+  font-size: 5vw;
+  color: white;
+  align-self: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+`;
+
 const Section = styled.div`
   display: flex;
   width: 100vw;
@@ -45,13 +55,16 @@ const Section = styled.div`
   align-items: center;
   animation: ${fadeIn} 1s ease-in;
 `;
-
+const Container = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 5vh;
+`;
 const Main = styled.div`
   position: relative;
   margin: 20px;
   border-radius: 20px;
-  height: 10vw;
-  width: 30vw;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
@@ -59,6 +72,7 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
+  align-self: center;
 `;
 const MainRight = styled.div`
   position: relative;
@@ -96,11 +110,19 @@ const Card = styled.div`
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+  @media only screen and (max-width: 900px) {
+    height: 14vw;
+    width: 14vw;
+  }
 `;
 
 const CardImg = styled.img`
   height: 6vw;
   width: 6vw;
+  @media only screen and (max-width: 900px) {
+    height: 12vw;
+    width: 12vw;
+  }
 `;
 
 const Contact = () => {
@@ -115,33 +137,44 @@ const Contact = () => {
       ref={sectionRef}
       style={{ opacity: isVisible ? 1 : 0, transition: "opacity 1s ease-in" }}
     >
-      <Main>
-        <Card
-          onClick={() =>
-            (window.location.href = "https://github.com/vikash18o19")
-          }
-        >
-          <CardImg src="./images/github.png" />
-        </Card>
-        <Card
-          onClick={() =>
-            (window.location.href = "https://www.instagram.com/_vikash_18_/")
-          }
-        >
-          <CardImg src="./images/instagram.png" />
-        </Card>
-        <Card
-          onClick={() =>
-            (window.location.href =
-              "https://www.linkedin.com/in/vikash-kumar-156675227")
-          }
-        >
-          <CardImg src="./images/linkedin.png" />
-        </Card>
-      </Main>
-      {/* <MainRight>
+      <Container>
+        <Title>Want to Contact?</Title>
+        <Main>
+          <Card
+            onClick={() =>
+              (window.location.href = "https://github.com/vikash18o19")
+            }
+          >
+            <CardImg src="./images/github.png" />
+          </Card>
+          <Card
+            onClick={() =>
+              (window.location.href = "https://www.instagram.com/_vikash_18_/")
+            }
+          >
+            <CardImg src="./images/instagram.png" />
+          </Card>
+          <Card
+            onClick={() =>
+              (window.location.href =
+                "https://www.linkedin.com/in/vikash-kumar-156675227")
+            }
+          >
+            <CardImg src="./images/linkedin.png" />
+          </Card>
+          <Card
+            onClick={() =>
+              (window.location.href =
+                "mailto:vikash.18.dev@gmail.com?subject=Subject%20Here&body=Message%20Here")
+            }
+          >
+            <CardImg src="./images/mail.png" />
+          </Card>
+        </Main>
+        {/* <MainRight>
         <GlassForm />
       </MainRight> */}
+      </Container>
     </Section>
   );
 };
