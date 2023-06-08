@@ -66,6 +66,15 @@ const Right = styled.div`
   }
 `;
 
+const Img = styled.img`
+  width: 10vw;
+`;
+const ImgRow = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
 const WhatWeDo = styled.div`
   text-align: center;
   gap: 10px;
@@ -158,6 +167,10 @@ const Who = () => {
           <Techstack>MONGODB</Techstack>
         </Left>
         <Right>
+          <ImgRow>
+            <Img src="./images/Basketball.png" />
+            <Img src="./images/Coffee.png" />
+          </ImgRow>
           <Title>Think outside the square space</Title>
           <WhatWeDo>
             <Subtitle>Who am I?</Subtitle>
