@@ -26,6 +26,7 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
+  align-self: center;
   font-size: 8vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
@@ -39,6 +40,7 @@ const WhatWeDo = styled(motion.div)`
 const Subtitle = styled.h2``;
 
 const Desc = styled(motion.p)`
+  text-align: center;
   font-size: 5vw;
 `;
 
@@ -110,7 +112,7 @@ const Hero = () => {
             <Subtitle>-- What I do..</Subtitle>
           </WhatWeDo> */}
           <Desc style={{ opacity: pathLength }}>
-            I enjoy creating apps with great visuals and involving AI.
+            Scroll Down to know more about me
           </Desc>
           {/* <Button>Learn More</Button> */}
         </Left>
