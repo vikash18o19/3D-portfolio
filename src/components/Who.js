@@ -48,6 +48,9 @@ const Title = styled.h1`
   @media only screen and (max-width: 900px) {
     font-size: 30px;
   }
+  @media only screen and (min-width: 900px) {
+    font-size: 50px;
+  }
 `;
 
 const Right = styled.div`
@@ -69,6 +72,9 @@ const Right = styled.div`
 
 const Img = styled.img`
   width: 10vw;
+  @media only screen and (min-width: 900px) {
+    width: 5vw;
+  }
 `;
 const ImgRow = styled.div`
   display: flex;
@@ -173,7 +179,7 @@ const Who = () => {
     >
       <Container
         style={{
-          bottom: "15vh",
+          bottom: "10vh",
           position: `${Percent >= 0.1 && Percent < 100 ? "fixed" : "absolute"}`,
         }}
       >

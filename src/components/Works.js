@@ -205,7 +205,7 @@ const Works = () => {
                     {isHovered === 1 ? (
                       <CardImg src="./images/app.png" alt="Logo" />
                     ) : (
-                      <CardImg src="./images/soil app logo.png" alt="Logo" />
+                      <CardImg src="./images/SoilApp.png" alt="Logo" />
                     )}
                   </Front>
                 </Content>
