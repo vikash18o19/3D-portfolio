@@ -15,7 +15,6 @@ import {
 const Section = styled(motion.div)`
   height: 400vh;
   /* scroll-snap-align: center; */
-  display: flex;
   position: relative;
 `;
 
@@ -32,6 +31,7 @@ const Left = styled.div`
     display: none;
     width: 400;
   } */
+  padding-top: 5vh;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -42,10 +42,10 @@ const Left = styled.div`
 const Title = styled.h1`
   padding: 5vw;
   text-align: center;
-  font-size: 5vhpx;
+  font-size: 8vh;
   color: grey;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 900px) {
     font-size: 30px;
   }
 `;
@@ -61,7 +61,7 @@ const Right = styled.div`
   justify-content: center;
   gap: 20px;
   @media only screen and (max-width: 768px) {
-    padding-right: 5vw;
+    padding-left: 5vw;
     align-items: center;
     text-align: center;
   }
@@ -76,7 +76,7 @@ const ImgRow = styled.div`
   gap: 20px;
 `;
 
-const WhatWeDo = styled.div`
+const WhatWeDo = styled(motion.div)`
   text-align: center;
   gap: 10px;
 `;
@@ -108,6 +108,26 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+`;
+const Experience = styled(motion.div)`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+const Card = styled.h3`
+  padding: 1vw;
+  text-align: center;
+  align-self: center;
+  color: grey;
+  position: relative;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.5s;
+  @media only screen and (max-width: 900px) {
+  }
 `;
 
 const Who = () => {
@@ -153,41 +173,77 @@ const Who = () => {
     >
       <Container
         style={{
-          bottom: "20vh",
+          bottom: "15vh",
           position: `${Percent >= 0.1 && Percent < 100 ? "fixed" : "absolute"}`,
         }}
       >
-        <Left>
-          <Title>What I usually work with ?</Title>
-          <Techstack>HTML</Techstack>
-          <Techstack>CSS</Techstack>
-          <Techstack>JAVASCRIPT</Techstack>
-          <Techstack>REACT</Techstack>
-          <Techstack>FLUTTER</Techstack>
-          <Techstack>NODE JS</Techstack>
-          <Techstack>MONGODB</Techstack>
-        </Left>
         <Right>
           <ImgRow>
             <Img src="./images/Basketball.png" />
             <Img src="./images/Coffee.png" />
           </ImgRow>
-          <Title>Dribble & Drink</Title>
-          <WhatWeDo>
-            <Subtitle>Who am I?</Subtitle>
-          </WhatWeDo>
-          <Desc
+          <Title
+            style={{
+              padding: "2vw",
+            }}
+          >
+            Get to know me
+          </Title>
+          <WhatWeDo
             style={{
               opacity: pathLength,
             }}
           >
-            Hey There, Vikash this side.
-            <br />
-            I am a full stack developer who loves to
-            <br />
-            drink coffee and dribble.
-          </Desc>
+            <Subtitle>Hey There..</Subtitle>
+
+            <Desc>
+              Vikash this side.
+              <br />
+              I am a full stack developer who loves
+              <br />
+              coffee and dribble.
+            </Desc>
+            <Subtitle
+              style={{
+                marginTop: "20px",
+              }}
+            >
+              I've worked at{" "}
+            </Subtitle>
+
+            <Experience>
+              <Card>
+                Research Intern <br /> University of Guelph ,Canada{" "}
+              </Card>
+              <Card>
+                ML Intern <br /> IIT Indore{" "}
+              </Card>
+              <Card>
+                Web Developer <br /> Inayat, Rajasthan{" "}
+              </Card>
+            </Experience>
+          </WhatWeDo>
         </Right>
+        <Left>
+          <Title>What I usually work with ?</Title>
+          <motion.div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "5px",
+              opacity: pathLength,
+            }}
+          >
+            <Techstack>HTML</Techstack>
+            <Techstack>CSS</Techstack>
+            <Techstack>JAVASCRIPT</Techstack>
+            <Techstack>REACT</Techstack>
+            <Techstack>FLUTTER</Techstack>
+            <Techstack>NODE JS</Techstack>
+            <Techstack>MONGODB</Techstack>
+          </motion.div>
+        </Left>
         <motion.div
           style={{
             position: `${Percent < 100 ? "fixed" : "absolute"}`,
