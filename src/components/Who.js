@@ -247,7 +247,9 @@ const Who = () => {
             <Techstack>REACT</Techstack>
             <Techstack>FLUTTER</Techstack>
             <Techstack>NODE JS</Techstack>
+            <Techstack>PYTHON</Techstack>
             <Techstack>MONGODB</Techstack>
+            <Techstack>ML</Techstack>
           </motion.div>
         </Left>
         <motion.div
