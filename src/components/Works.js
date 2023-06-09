@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -27,7 +29,7 @@ const Upper = styled.div`
   align-self: center;
 `;
 
-const Lower = styled.div`
+const Lower = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -123,6 +125,29 @@ const CardHeading = styled.h2`
 
 const Works = () => {
   const [isHovered, setIsHovered] = useState(0);
+  const [ref, inView] = useInView({ threshold: 0.2 });
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    console.log(inView);
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        x: 0,
+        transition: {
+          type: "spring",
+          duration: 1,
+          bounce: 0.5,
+        },
+      });
+    } else {
+      animation.start({
+        x: -100,
+        opacity: 0,
+      });
+    }
+  }, [inView]);
 
   const handleHover = (num) => {
     setIsHovered(num);
@@ -165,7 +190,7 @@ const Works = () => {
           <Upper>
             <Heading>PROJECTS AND WORKS</Heading>
           </Upper>
-          <Lower>
+          <Lower ref={ref} animate={animation}>
             <Row1>
               <Card className="distort">
                 <Content>
