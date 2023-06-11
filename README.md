@@ -1,5 +1,3 @@
-#React based 3D portfolio
+# Portfolio Website 
 
-To be deployed after develpoment.
-
-will be up and running in june 2023.
+- Deployed at https://vikash-portfolio-zn83g.ondigitalocean.app/
