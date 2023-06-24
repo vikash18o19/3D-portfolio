@@ -1,13 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+const CardContainer = styled(motion.div)`
+  position: relative;
+  margin: 20px;
+  border-radius: 20px;
+  width: 15vw;
+  height: 15vw;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: transform 0.5s;
 
-  * {
-    scroll-behavior: smooth;
+  @media only screen and (max-width: 900px) {
+    width: 25vw;
+    height: 25vw;
   }
 `;
 
@@ -42,64 +51,6 @@ const Row1 = styled.div`
   flex-direction: row;
   align-self: center;
 `;
-const Row2 = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-`;
-
-const Card = styled.div`
-  position: relative;
-  margin: 20px;
-  border-radius: 20px;
-  width: 15svw;
-  height: 15svw;
-  backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: transform 0.5s;
-  @media only screen and (max-width: 900px) {
-    width: 25vw;
-    height: 25vw;
-  }
-`;
-
-const Content = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-`;
-
-const Front = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transform: translateZ(100px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Back = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transform: rotateY(180deg) translateZ(100px);
-`;
-
-const CardImg = styled.img`
-  height: 80%;
-  width: 80%;
-`;
-
 const Heading = styled.h1`
   text-align: center;
   padding: 1rem;
@@ -117,14 +68,44 @@ const Heading = styled.h1`
     font-size: 8vw;
   }
 `;
-const CardHeading = styled.h2`
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+const CardContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+`;
+
+const CardFront = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateZ(100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: rotateY(180deg) translateZ(100px);
+`;
+
+const CardImg = styled.img`
+  height: 80%;
+  width: 80%;
 `;
 
 const Works = () => {
-  const [isHovered, setIsHovered] = useState(0);
+  const [isHovered, setIsHovered] = useState(null);
   const [ref, inView] = useInView({ threshold: 0.2 });
 
   const animation = useAnimation();
@@ -148,104 +129,71 @@ const Works = () => {
       });
     }
   }, [inView]);
-
-  const handleHover = (num) => {
-    setIsHovered(num);
+  const handleCardHover = (cardId) => {
+    setIsHovered(cardId);
   };
 
-  const handleLeave = () => {
-    setIsHovered(0);
+  const handleCardLeave = () => {
+    setIsHovered(null);
   };
+
+  const cards = [
+    {
+      id: 1,
+      frontImgSrc: "./images/SoilApp.png",
+      backImgSrc: "./images/app.png",
+      link: "https://github.com/vikash18o19/soil-app-frontend",
+    },
+    {
+      id: 2,
+      frontImgSrc: "./images/NeuralNet.png",
+      backImgSrc: "./images/Traffic.png",
+      link: "https://github.com/vikash18o19/Traffic_sign_recognition",
+    },
+    {
+      id: 3,
+      frontImgSrc: "./images/painter.png",
+      backImgSrc: "./images/finger.png",
+      link: "https://github.com/vikash18o19/Finger_Painter",
+    },
+    {
+      id: 4,
+      frontImgSrc: "./images/GAN.png",
+      backImgSrc: "./images/GanModel.png",
+      link: "https://github.com/vikash18o19/Soil-GAN",
+    },
+  ];
 
   return (
-    <>
-      <GlobalStyle />
-      <Section>
-        <MainContainer>
-          <Upper>
-            <Heading>PROJECTS AND WORKS</Heading>
-          </Upper>
-          <Lower ref={ref} animate={animation}>
-            <Row1>
-              <Card>
-                <Content>
-                  <Front
-                    onMouseEnter={() => handleHover(1)} //always have to pass a ref not call directly.
-                    onMouseLeave={handleLeave}
-                    onClick={() =>
-                      (window.location.href =
-                        "https://github.com/vikash18o19/soil-app-frontend")
+    <Section>
+      <MainContainer>
+        <Upper>
+          <Heading>PROJECTS AND WORKS</Heading>
+        </Upper>
+        <Lower ref={ref} animate={animation}>
+          {cards.map((card) => (
+            <CardContainer
+              key={card.id}
+              onMouseEnter={() => handleCardHover(card.id)}
+              onMouseLeave={handleCardLeave}
+              onClick={() => (window.location.href = card.link)}
+              whileHover={{ scale: isHovered === card.id ? 1.2 : 1 }}
+            >
+              <CardContent>
+                <CardFront>
+                  <CardImg
+                    src={
+                      isHovered === card.id ? card.backImgSrc : card.frontImgSrc
                     }
-                  >
-                    {isHovered === 1 ? (
-                      <CardImg src="./images/app.png" alt="Logo" />
-                    ) : (
-                      <CardImg src="./images/SoilApp.png" alt="Logo" />
-                    )}
-                  </Front>
-                </Content>
-              </Card>
-              <Card>
-                <Content>
-                  <Front
-                    onMouseEnter={() => handleHover(2)} //always have to pass a ref not call directly.
-                    onMouseLeave={handleLeave}
-                    onClick={() =>
-                      (window.location.href =
-                        "https://github.com/vikash18o19/Traffic_sign_recognition")
-                    }
-                  >
-                    {isHovered === 2 ? (
-                      <CardImg src="./images/Traffic.png" alt="Logo" />
-                    ) : (
-                      <CardImg src="./images/NeuralNet.png" alt="Logo" />
-                    )}
-                  </Front>
-                </Content>
-              </Card>
-            </Row1>
-            <Row2>
-              <Card>
-                <Content>
-                  <Front
-                    onMouseEnter={() => handleHover(3)} //always have to pass a ref not call directly.
-                    onMouseLeave={handleLeave}
-                    onClick={() =>
-                      (window.location.href =
-                        "https://github.com/vikash18o19/Finger_Painter")
-                    }
-                  >
-                    {isHovered === 3 ? (
-                      <CardImg src="./images/finger.png" alt="Logo" />
-                    ) : (
-                      <CardImg src="./images/painter.png" alt="Logo" />
-                    )}
-                  </Front>
-                </Content>
-              </Card>
-              <Card>
-                <Content>
-                  <Front
-                    onMouseEnter={() => handleHover(4)} //always have to pass a ref not call directly.
-                    onMouseLeave={handleLeave}
-                    onClick={() =>
-                      (window.location.href =
-                        "https://github.com/vikash18o19/Soil-GAN")
-                    }
-                  >
-                    {isHovered === 4 ? (
-                      <CardImg src="./images/GanModel.png" alt="Logo" />
-                    ) : (
-                      <CardImg src="./images/GAN.png" alt="Logo" />
-                    )}
-                  </Front>
-                </Content>
-              </Card>
-            </Row2>
-          </Lower>
-        </MainContainer>
-      </Section>
-    </>
+                    alt="Logo"
+                  />
+                </CardFront>
+              </CardContent>
+            </CardContainer>
+          ))}
+        </Lower>
+      </MainContainer>
+    </Section>
   );
 };
 
