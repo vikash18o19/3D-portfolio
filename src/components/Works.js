@@ -42,10 +42,14 @@ const Lower = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-self: center;
+  flex-wrap: wrap;
+
   @media only screen and (max-width: 900px) {
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
+
 const Row1 = styled.div`
   display: flex;
   flex-direction: row;
