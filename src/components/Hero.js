@@ -27,13 +27,17 @@ const Left = styled.div`
 
 const Title = styled.h1`
   align-self: center;
-  font-size: 8vw;
+  font-size: 15vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  @media only screen and (min-width: 1000px) {
+    font-size: 8vw;
+  }
 `;
 
 const WhatWeDo = styled(motion.div)`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 10px;
 `;
 
@@ -42,6 +46,9 @@ const Subtitle = styled.h2``;
 const Desc = styled(motion.p)`
   text-align: center;
   font-size: 5vw;
+  @media only screen and (min-width: 1000px) {
+    font-size: 3vw;
+  }
 `;
 
 const Button = styled.button`
@@ -74,8 +81,6 @@ const Hero = () => {
       }),
     [yRange]
   );
-  // console.log(currentPercent);
-  // console.log(currentProgressColor);
   useEffect(() => {
     setCurrentProgressColor(
       currentPercent >= 90
@@ -105,17 +110,9 @@ const Hero = () => {
       >
         <Left>
           <Title>Welcome</Title>
-          {/* <WhatWeDo
-            style={{
-              fontSize: `50px`,
-            }}
-          >
-            <Subtitle>-- What I do..</Subtitle>
-          </WhatWeDo> */}
           <Desc style={{ opacity: pathLength }}>
             Scroll Down to know more about me
           </Desc>
-          {/* <Button>Learn More</Button> */}
         </Left>
         <motion.div
           style={{
