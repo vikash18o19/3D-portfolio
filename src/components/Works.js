@@ -157,31 +157,6 @@ const Works = () => {
     setIsHovered(0);
   };
 
-  // useEffect(() => {
-  //   const handleMouseMove = (event) => {
-  //     const distortDivs = document.querySelectorAll(".distort");
-  //     distortDivs.forEach((distortDiv) => {
-  //       const rect = distortDiv.getBoundingClientRect();
-  //       const mouseX = event.clientX - rect.left;
-  //       const mouseY = event.clientY - rect.top;
-  //       const centerX = rect.width / 2;
-  //       const centerY = rect.height / 2;
-  //       const distX = mouseX - centerX;
-  //       const distY = mouseY - centerY;
-
-  //       distortDiv.style.transform = `rotateX(${-distY / 20}deg) rotateY(${
-  //         distX / 20
-  //       }deg)`;
-  //     });
-  //   };
-
-  //   document.addEventListener("mousemove", handleMouseMove);
-
-  //   return () => {
-  //     document.removeEventListener("mousemove", handleMouseMove);
-  //   };
-  // }, []);
-
   return (
     <>
       <GlobalStyle />
@@ -192,7 +167,7 @@ const Works = () => {
           </Upper>
           <Lower ref={ref} animate={animation}>
             <Row1>
-              <Card className="distort">
+              <Card>
                 <Content>
                   <Front
                     onMouseEnter={() => handleHover(1)} //always have to pass a ref not call directly.
@@ -210,7 +185,7 @@ const Works = () => {
                   </Front>
                 </Content>
               </Card>
-              <Card className="distort">
+              <Card>
                 <Content>
                   <Front
                     onMouseEnter={() => handleHover(2)} //always have to pass a ref not call directly.
@@ -230,7 +205,7 @@ const Works = () => {
               </Card>
             </Row1>
             <Row2>
-              <Card className="distort">
+              <Card>
                 <Content>
                   <Front
                     onMouseEnter={() => handleHover(3)} //always have to pass a ref not call directly.
@@ -248,7 +223,7 @@ const Works = () => {
                   </Front>
                 </Content>
               </Card>
-              <Card className="distort">
+              <Card>
                 <Content>
                   <Front
                     onMouseEnter={() => handleHover(4)} //always have to pass a ref not call directly.
