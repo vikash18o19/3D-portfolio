@@ -85,9 +85,9 @@ const Hero = () => {
       currentPercent >= 90
         ? "black"
         : currentPercent >= 45
-        ? "#31A9D5"
+        ? "black"
         : currentPercent >= 20
-        ? "#FF3B77"
+        ? "white"
         : "white"
     );
   }, [currentPercent]);
@@ -136,8 +136,35 @@ const Hero = () => {
           />
         ))}
         <Left>
-          <Title>Welcome</Title>
-          <Desc style={{ opacity: pathLength }}>
+          <Title
+            style={{
+              /* Text styles */
+              color: "white" /* Primary text color */,
+              mixBlendMode:
+                "difference" /* Blend mode to interact with background */,
+              backgroundColor:
+                "black" /* Black background for white text effect */,
+              padding: "10px" /* Optional: Add padding to the Title element */,
+              borderRadius:
+                "5px" /* Optional: Add rounded corners to the Title element */,
+            }}
+          >
+            Welcome
+          </Title>
+          <Desc
+            style={{
+              /* Text styles */
+              opacity: pathLength,
+              color: "white" /* Primary text color */,
+              mixBlendMode:
+                "difference" /* Blend mode to interact with background */,
+              backgroundColor:
+                "black" /* Black background for white text effect */,
+              padding: "10px" /* Optional: Add padding to the Title element */,
+              borderRadius:
+                "5px" /* Optional: Add rounded corners to the Title element */,
+            }}
+          >
             Scroll Down to know more about me
           </Desc>
         </Left>
