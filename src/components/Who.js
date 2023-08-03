@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 // import { OrbitControls } from "@react-three/drei";
 // import { Canvas } from "@react-three/fiber";
 // import Cube from "./Cube";
@@ -12,10 +12,19 @@ import {
   inView,
 } from "framer-motion";
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 const Section = styled(motion.div)`
   height: 400vh;
   /* scroll-snap-align: center; */
   position: relative;
+  animation: ${fadeIn} 1s ease-in;
 `;
 
 const Container = styled(motion.div)`
@@ -175,7 +184,10 @@ const Who = () => {
   return (
     <Section
       ref={ref}
-      style={{ backgroundColor: `${Percent < 100 ? "black" : "white"}` }}
+      style={{
+        backgroundColor: `${Percent < 100 ? "black" : "white"}`,
+        transition: "opacity 1s ease-in",
+      }}
     >
       <Container
         style={{

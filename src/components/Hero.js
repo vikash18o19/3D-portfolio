@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+
 const Section = styled(motion.div)`
   height: 400vh;
   display: flex;
@@ -51,12 +52,10 @@ const Desc = styled(motion.p)`
   }
 `;
 
-const Button = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  width: 150px;
-  height: 30px;
+const Particle = styled(motion.div)`
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
 `;
 
 const Hero = () => {
@@ -93,6 +92,23 @@ const Hero = () => {
     );
   }, [currentPercent]);
 
+  // Function to generate random values within a range
+  const randomRange = (min, max) => Math.random() * (max - min) + min;
+
+  // Create a state to hold the particles' data
+  const [particles, setParticles] = useState([]);
+
+  // Generate random particles on component mount
+  useEffect(() => {
+    const numParticles = 100; // Adjust the number of particles as needed
+    const newParticles = Array.from({ length: numParticles }).map(() => ({
+      x: randomRange(0, 100), // X position in viewport percentage (0-100)
+      y: randomRange(0, 100), // Y position in viewport percentage (0-100)
+      size: randomRange(1, 8), // Size of the particle (1-5 pixels)
+    }));
+    setParticles(newParticles);
+  }, []);
+
   return (
     <Section
       ref={HeroRef}
@@ -108,6 +124,17 @@ const Hero = () => {
           color: currentProgressColor,
         }}
       >
+        {particles.map((particle, index) => (
+          <Particle
+            key={index}
+            style={{
+              top: `${particle.y}vh`,
+              left: `${particle.x}vw`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+            }}
+          />
+        ))}
         <Left>
           <Title>Welcome</Title>
           <Desc style={{ opacity: pathLength }}>
