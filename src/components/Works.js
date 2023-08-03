@@ -97,7 +97,7 @@ const Heading = styled.h1`
   color: white;
   border-radius: 15px;
   @media only screen and (max-width: 900px) {
-    font-size: 3rem;
+    font-size: 6vw;
   }
 `;
 const CardContent = styled.div`
