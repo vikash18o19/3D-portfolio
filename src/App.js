@@ -3,6 +3,7 @@ import Contact from "./components/Contact";
 import Hero from "./components/Hero";
 import Who from "./components/Who";
 import Works from "./components/Works";
+import React, { useState, useEffect } from "react";
 const Container = styled.div`
   /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
@@ -19,14 +20,20 @@ const Container = styled.div`
   @media only screen and (max-width: 10px) {
     background-size: contain;
   }
+  /* overflow: ${({ overflow }) => (overflow ? "visible" : "hidden")}; */
 `;
 
 function App() {
+  const bodyStyle = document.body.style;
+  const [overflow, setOverflow] = useState(true);
+  useEffect(() => {
+    bodyStyle.overflowY = overflow ? "auto" : "hidden";
+  }, [overflow]);
   return (
     <Container>
       <Hero />
       <Who />
-      <Works />
+      <Works setOverflow={setOverflow} />
       <Contact />
     </Container>
   );
