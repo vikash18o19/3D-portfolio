@@ -91,13 +91,13 @@ const Heading = styled.h1`
   padding: 1rem;
   margin-top: 3em;
   margin-bottom: 1em;
-  font-size: 5vw;
+  font-size: 3.5rem;
   font-weight: bold;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   border-radius: 15px;
   @media only screen and (max-width: 900px) {
-    font-size: 8vw;
+    font-size: 3rem;
   }
 `;
 const CardContent = styled.div`
