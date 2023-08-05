@@ -11,6 +11,7 @@ import {
   useTransform,
   inView,
 } from "framer-motion";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const fadeIn = keyframes`
   from {
@@ -167,7 +168,7 @@ const Who = () => {
       }),
     [yRange]
   );
-  console.log(Percent);
+  // console.log(Percent);
 
   useEffect(() => {
     setCurrentProgressColor(
@@ -180,6 +181,26 @@ const Who = () => {
         : "white"
     );
   }, [Percent]);
+  const handleDownload = async () => {
+    const resumeDownloadLink =
+      "https://sharito-backend-9wnyh.ondigitalocean.app/download/resume";
+
+    fetch(resumeDownloadLink, { method: "GET", responseType: "blob" })
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "your-resume.pdf");
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      })
+      .catch((error) => {
+        alert("Try again later..");
+        console.error("Error downloading resume:", error);
+      });
+  };
 
   return (
     <Section
@@ -262,6 +283,17 @@ const Who = () => {
             <Techstack>PYTHON</Techstack>
             <Techstack>MONGODB</Techstack>
             <Techstack>ML</Techstack>
+            <Techstack
+              onClick={handleDownload}
+              style={{
+                margin: "2rem",
+                color: "black",
+                cursor: "pointer",
+                textAlign: "center",
+              }}
+            >
+              Download Resume
+            </Techstack>
           </motion.div>
         </Left>
         <motion.div

@@ -148,7 +148,7 @@ const Works = ({ setOverflow }) => {
   const typedText = useTypewriterAnimation(headingText);
 
   useEffect(() => {
-    console.log(inView);
+    // console.log(inView);
     if (inView) {
       animation.start({
         opacity: 1,
