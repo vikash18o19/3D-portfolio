@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import BigCard from "./BigCard";
+import Type from "./Type";
+import "./stars.scss";
 
 const HeadingText = styled(motion.h1)`
   overflow: hidden;
@@ -217,9 +219,15 @@ const Works = ({ setOverflow }) => {
   return (
     <Section>
       <MainContainer>
+        <div id="stars" />
+        <div id="stars2" />
+        <div id="stars3" />
+
         <Upper>
           <HeadingText>
-            <Heading>P{typedText}|</Heading>
+            <Heading>
+              <Type />
+            </Heading>
           </HeadingText>
         </Upper>
         <Lower ref={ref} animate={animation}>

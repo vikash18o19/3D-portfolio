@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 // import { OrbitControls } from "@react-three/drei";
 // import { Canvas } from "@react-three/fiber";
 // import Cube from "./Cube";
+import "./stars.scss";
 
 import {
   motion,
@@ -210,6 +211,10 @@ const Who = () => {
         transition: "opacity 1s ease-in",
       }}
     >
+      <div id="stars" />
+      <div id="stars2" />
+      <div id="stars3" />
+
       <Container
         style={{
           bottom: "10vh",
@@ -308,6 +313,9 @@ const Who = () => {
           }}
         ></motion.div>
       </Container>
+      <div id="stars" />
+      <div id="stars2" />
+      <div id="stars3" />
     </Section>
   );
 };

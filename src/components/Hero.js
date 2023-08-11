@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import "./stars.scss";
 
 const Section = styled(motion.div)`
   height: 400vh;
@@ -110,77 +111,83 @@ const Hero = () => {
   }, []);
 
   return (
-    <Section
-      ref={HeroRef}
-      style={{ backgroundColor: `${currentPercent < 100 ? "black" : "white"}` }}
-    >
-      <Container
+    <div>
+      <Section
+        ref={HeroRef}
         style={{
-          position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
-          bottom: "30vh",
-          left: "0",
-          paddingLeft: "30vw",
-          opacity: pathLength + 0.1,
-          color: currentProgressColor,
+          backgroundColor: `${currentPercent < 100 ? "black" : "white"}`,
         }}
       >
-        {particles.map((particle, index) => (
-          <Particle
-            key={index}
-            style={{
-              top: `${particle.y}vh`,
-              left: `${particle.x}vw`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-            }}
-          />
-        ))}
-        <Left>
-          <Title
-            style={{
-              /* Text styles */
-              color: "white" /* Primary text color */,
-              mixBlendMode:
-                "difference" /* Blend mode to interact with background */,
-              backgroundColor:
-                "black" /* Black background for white text effect */,
-              padding: "10px" /* Optional: Add padding to the Title element */,
-              borderRadius:
-                "5px" /* Optional: Add rounded corners to the Title element */,
-            }}
-          >
-            Welcome
-          </Title>
-          <Desc
-            style={{
-              /* Text styles */
-              opacity: pathLength,
-              color: "white" /* Primary text color */,
-              mixBlendMode:
-                "difference" /* Blend mode to interact with background */,
-              backgroundColor:
-                "black" /* Black background for white text effect */,
-              padding: "10px" /* Optional: Add padding to the Title element */,
-              borderRadius:
-                "5px" /* Optional: Add rounded corners to the Title element */,
-            }}
-          >
-            Scroll Down to know more about me
-          </Desc>
-        </Left>
-        <motion.div
+        <Container
           style={{
             position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
-            top: "0px",
-            left: "0px",
-            height: "100vh",
-            backgroundColor: "white",
-            width: `${currentPercent}vw`,
-            zIndex: -1,
+            bottom: "30vh",
+            left: "0",
+            paddingLeft: "30vw",
+            opacity: pathLength + 0.1,
+            color: currentProgressColor,
           }}
-        ></motion.div>
-      </Container>
-    </Section>
+        >
+          {particles.map((particle, index) => (
+            <Particle
+              key={index}
+              style={{
+                top: `${particle.y}vh`,
+                left: `${particle.x}vw`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+              }}
+            />
+          ))}
+          <Left>
+            <Title
+              style={{
+                /* Text styles */
+                color: "white" /* Primary text color */,
+                mixBlendMode:
+                  "difference" /* Blend mode to interact with background */,
+                backgroundColor:
+                  "black" /* Black background for white text effect */,
+                padding:
+                  "10px" /* Optional: Add padding to the Title element */,
+                borderRadius:
+                  "5px" /* Optional: Add rounded corners to the Title element */,
+              }}
+            >
+              Welcome
+            </Title>
+            <Desc
+              style={{
+                /* Text styles */
+                opacity: pathLength,
+                color: "white" /* Primary text color */,
+                mixBlendMode:
+                  "difference" /* Blend mode to interact with background */,
+                backgroundColor:
+                  "black" /* Black background for white text effect */,
+                padding:
+                  "10px" /* Optional: Add padding to the Title element */,
+                borderRadius:
+                  "5px" /* Optional: Add rounded corners to the Title element */,
+              }}
+            >
+              Scroll Down to know more about me
+            </Desc>
+          </Left>
+          <motion.div
+            style={{
+              position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
+              top: "0px",
+              left: "0px",
+              height: "100vh",
+              backgroundColor: "white",
+              width: `${currentPercent}vw`,
+              zIndex: -1,
+            }}
+          ></motion.div>
+        </Container>
+      </Section>
+    </div>
   );
 };
 
