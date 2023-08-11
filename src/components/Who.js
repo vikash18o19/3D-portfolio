@@ -313,9 +313,6 @@ const Who = () => {
           }}
         ></motion.div>
       </Container>
-      <div id="stars" />
-      <div id="stars2" />
-      <div id="stars3" />
     </Section>
   );
 };
