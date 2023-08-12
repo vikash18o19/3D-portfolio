@@ -210,9 +210,18 @@ const Works = ({ setOverflow }) => {
     {
       id: 5,
       frontImgSrc: "./images/sharito.png",
-      backImgSrc: "./images/sharito.png",
+      backImgSrc: "./images/sharito-real.png",
       link: "https://github.com/vikash18o19/sharito",
-      description: "A social media app using MERN stack.",
+      description:
+        "A social media app where you can share posts, find friends and chat in realtime. Made using React, MongoDB, Express, Socket.io and Tailwind",
+    },
+    {
+      id: 6,
+      frontImgSrc: "./images/portfolio-logo.png",
+      backImgSrc: "./images/portfolio.png",
+      link: "https://github.com/vikash18o19/3D-portfolio",
+      description:
+        "Portfolio Website made using react, framer-motion and styled-components.",
     },
   ];
 

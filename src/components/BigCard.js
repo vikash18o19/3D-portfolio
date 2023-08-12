@@ -34,7 +34,7 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
         <img
           src={selectedCard.backImgSrc}
           alt="Logo"
-          style={{ width: window.innerWidth <= 768 ? "40vh" : "30vh" }}
+          style={{ width: window.innerWidth <= 768 ? "40vh" : "35vh" }}
         />
         <p
           style={{
