@@ -4,6 +4,9 @@ import Hero from "./components/Hero";
 import Who from "./components/Who";
 import Works from "./components/Works";
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MobileWho from "./components/MobileView/WhoMobile";
+
 const Container = styled.div`
   /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
@@ -24,6 +27,28 @@ const Container = styled.div`
 `;
 
 function App() {
+  const [displayMobileWho, setDisplayMobileWho] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 500) {
+        setDisplayMobileWho(true);
+      } else {
+        setDisplayMobileWho(false);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const bodyStyle = document.body.style;
   const [overflow, setOverflow] = useState(true);
   useEffect(() => {
@@ -32,7 +57,7 @@ function App() {
   return (
     <Container>
       <Hero />
-      <Who />
+      {displayMobileWho ? <MobileWho /> : <Who />}
       <Works setOverflow={setOverflow} />
       <Contact />
     </Container>
