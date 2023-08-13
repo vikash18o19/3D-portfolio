@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-
+import { TypeAbout } from "../Type";
 const MobileAbout = () => {
   return (
     <div style={{ color: "white", paddingBottom: "2rem", paddingTop: "4rem" }}>
@@ -12,8 +12,8 @@ const MobileAbout = () => {
             paddingRight: "2rem",
           }}
         >
-          <p className="text-center">
-            Hey There.. Vikash this side. I am a full stack developer
+          <p style={{ fontSize: "1.5rem" }} className="text-center">
+            <TypeAbout />
           </p>
         </Col>
       </Row>

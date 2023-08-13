@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import BigCard from "./BigCard";
-import Type from "./Type";
+import { Type } from "./Type";
 import "./stars.scss";
 
 const HeadingText = styled(motion.h1)`
