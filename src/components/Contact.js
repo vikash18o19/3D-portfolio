@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState, useRef } from "react";
 import GlassForm from "./glassForm";
+import { Row, Col } from "react-bootstrap";
 
 const useIntersectionObserver = (options) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,6 +74,9 @@ const Main = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   align-self: center;
+  @media only screen and (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 const MainRight = styled.div`
   position: relative;
