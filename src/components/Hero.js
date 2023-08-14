@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
 
 const Section = styled(motion.div)`
-  height: 180vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,9 +114,11 @@ const Hero = () => {
     <div>
       <Section
         ref={HeroRef}
-        style={{
-          backgroundColor: `${currentPercent < 100 ? "black" : "white"}`,
-        }}
+        style={
+          {
+            // backgroundColor: `${currentPercent < 100 ? "black" : "white"}`,
+          }
+        }
       >
         <Container
           style={{
@@ -174,7 +176,7 @@ const Hero = () => {
               Scroll Down to know more about me
             </Desc>
           </Left>
-          <motion.div
+          {/* <motion.div
             style={{
               position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
               top: "0px",
@@ -184,7 +186,7 @@ const Hero = () => {
               width: `${currentPercent}vw`,
               zIndex: -1,
             }}
-          ></motion.div>
+          ></motion.div> */}
         </Container>
       </Section>
     </div>
