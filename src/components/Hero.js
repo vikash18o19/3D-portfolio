@@ -122,7 +122,7 @@ const Hero = () => {
       >
         <Container
           style={{
-            position: `${currentPercent < 100 ? "fixed" : "absolute"}`,
+            position: "absolute",
             bottom: "30vh",
             left: "0",
             paddingLeft: "30vw",
