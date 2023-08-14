@@ -96,13 +96,13 @@ const MobileWho = () => {
                     type: "spring",
                     stiffness: 50,
                   }}
-                  className="d-flex justify-content-center align-items-center m-2"
+                  className="d-flex justify-content-center align-items-center m-2 tech-icons"
                   // Apply the ref
                 >
-                  <div className="p-2 tech-icons">{skill.icon}</div>
-                  <div className="p-2" style={{ marginRight: "10px" }}>
+                  <div className="p-2">{skill.icon}</div>
+                  {/* <div className="p-2" style={{ marginRight: "10px" }}>
                     {skill.name}
-                  </div>
+                  </div> */}
                 </motion.div>
               );
             })}
