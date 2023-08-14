@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
 
 const Section = styled(motion.div)`
-  height: 400vh;
+  height: 110vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -132,7 +132,7 @@ const Hero = () => {
             <Particle
               key={index}
               style={{
-                top: `${particle.y}vh`,
+                bottom: `${particle.y}vh`,
                 left: `${particle.x}vw`,
                 width: `${particle.size}px`,
                 height: `${particle.size}px`,
@@ -159,7 +159,7 @@ const Hero = () => {
             <Desc
               style={{
                 /* Text styles */
-                opacity: pathLength,
+                // opacity: pathLength,
                 color: "white" /* Primary text color */,
                 mixBlendMode:
                   "difference" /* Blend mode to interact with background */,
