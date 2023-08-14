@@ -83,13 +83,13 @@ const MobileWho = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: -50 }}
+                  initial={{ opacity: 0, y: -100 }}
                   animate={{
                     opacity: inView ? 1 : 0,
                     y: inView ? 0 : -50,
                     scale: inView ? 1.1 : 1, // Adding scale animation
                   }}
-                  exit={{ opacity: 0, y: 50 }}
+                  // exit={{ opacity: 0, y: 50 }}
                   transition={{
                     delay: inView ? 0.2 + index * 0.1 : 0,
                     duration: 0.8,
@@ -119,16 +119,16 @@ const MobileWho = () => {
         }}
         initial={{ scale: 1 }}
         animate={{
-          scale: [1, 1.2, 1],
+          scale: [1, 1.08, 1],
           transition: { repeat: Infinity, duration: 1 },
         }}
-        whileHover={{ scale: 1.4 }}
+        whileHover={{ scale: 1.1 }}
       >
         <Button
           variant="outline-dark"
           onClick={handleDownload}
           className="btn-lg"
-          style={{ width: "20rem", color: "white", borderColor: "white" }}
+          style={{ width: "15rem", color: "white", borderColor: "white" }}
         >
           Download Resume
         </Button>

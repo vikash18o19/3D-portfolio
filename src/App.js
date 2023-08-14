@@ -27,53 +27,53 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [displayMobileWho, setDisplayMobileWho] = useState(false);
-  useEffect(() => {
-    const scrollToPosition = window.innerHeight * 1; // 120vh
-    const duration = 5000; // Duration of the animation in milliseconds
-    const start = window.scrollY;
-    const startTime = performance.now();
+  // const [displayMobileWho, setDisplayMobileWho] = useState(false);
+  // useEffect(() => {
+  //   const scrollToPosition = window.innerHeight * 1; // 120vh
+  //   const duration = 5000; // Duration of the animation in milliseconds
+  //   const start = window.scrollY;
+  //   const startTime = performance.now();
 
-    function scrollAnimation(currentTime) {
-      const elapsedTime = currentTime - startTime;
-      const scrollProgress = Math.min(elapsedTime / duration, 1);
-      const easedProgress = easeInOutCubic(scrollProgress);
-      const scrollDistance = scrollToPosition - start;
-      const scrollOffset = start + easedProgress * scrollDistance;
+  //   function scrollAnimation(currentTime) {
+  //     const elapsedTime = currentTime - startTime;
+  //     const scrollProgress = Math.min(elapsedTime / duration, 1);
+  //     const easedProgress = easeInOutCubic(scrollProgress);
+  //     const scrollDistance = scrollToPosition - start;
+  //     const scrollOffset = start + easedProgress * scrollDistance;
 
-      window.scrollTo(0, scrollOffset);
+  //     window.scrollTo(0, scrollOffset);
 
-      if (elapsedTime < duration) {
-        window.requestAnimationFrame(scrollAnimation);
-      }
-    }
+  //     if (elapsedTime < duration) {
+  //       window.requestAnimationFrame(scrollAnimation);
+  //     }
+  //   }
 
-    function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-    }
+  //   function easeInOutCubic(t) {
+  //     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  //   }
 
-    window.requestAnimationFrame(scrollAnimation);
-  }, []);
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 500) {
-        setDisplayMobileWho(true);
-      } else {
-        setDisplayMobileWho(false);
-      }
-    };
+  //   window.requestAnimationFrame(scrollAnimation);
+  // }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth < 500) {
+  //       setDisplayMobileWho(true);
+  //     } else {
+  //       setDisplayMobileWho(false);
+  //     }
+  //   };
 
-    // Initial check
-    handleResize();
+  //   // Initial check
+  //   handleResize();
 
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
+  //   // Add event listener for window resize
+  //   window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   // Clean up the event listener when the component is unmounted
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
   const bodyStyle = document.body.style;
   const [overflow, setOverflow] = useState(true);
   useEffect(() => {

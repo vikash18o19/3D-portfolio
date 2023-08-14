@@ -30,6 +30,9 @@ const MobileAbout = () => {
       <Row style={{ padding: "2rem" }}>
         <Col
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             padding: "0.5rem",
             margin: "0.5rem",
             borderRadius: "5px",
@@ -43,6 +46,9 @@ const MobileAbout = () => {
         </Col>
         <Col
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             margin: "0.5rem",
             padding: "0.5rem",
             borderRadius: "5px",
@@ -56,11 +62,15 @@ const MobileAbout = () => {
         </Col>
         <Col
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             padding: "0.5rem",
             margin: "0.5rem",
             borderRadius: "5px",
             backdropFilter: "blur(10px)",
             backgroundColor: "rgba(255, 255, 255, 0.25)",
+            hover: "scale(1.1)",
           }}
         >
           <p className="text-center">

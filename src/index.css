@@ -3,7 +3,7 @@
 }
 
 .tech-icons {
-    font-size: 4.5em !important;
+    font-size: 4em !important;
     margin: 15px !important;
     padding: 10px !important;
     opacity: 0.93 !important;
@@ -24,9 +24,9 @@
   }
   
   .tech-icons:hover {
-    transform: scale(1.05) !important;
+    /* transform: scale(1.1) !important; */
     overflow: hidden !important;
-    border: 2.2px solid white !important;
+    /* border: 1px solid rgb(41, 39, 39) !important; */
   }
   .tech-icon-images {
     padding: 20px !important;
