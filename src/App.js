@@ -29,7 +29,7 @@ const Container = styled.div`
 function App() {
   const [displayMobileWho, setDisplayMobileWho] = useState(false);
   useEffect(() => {
-    const scrollToPosition = window.innerHeight * 1.1; // 120vh
+    const scrollToPosition = window.innerHeight * 1.8; // 120vh
     const duration = 5000; // Duration of the animation in milliseconds
     const start = window.scrollY;
     const startTime = performance.now();

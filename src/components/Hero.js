@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
 
 const Section = styled(motion.div)`
-  height: 110vh;
+  height: 180vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
