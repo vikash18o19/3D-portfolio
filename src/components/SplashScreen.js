@@ -13,7 +13,7 @@ const StyledSplashScreen = styled(motion.div)`
   justify-content: center;
   align-items: center;
   background-color: #000;
-  z-index: 9999;
+  z-index: 9998;
 `;
 
 const ContentWrapper = styled.div`
@@ -32,7 +32,7 @@ const SplashScreen = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const controls = useAnimation();
-
+  const sliderControls = useAnimation();
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) => prevProgress + 1);
@@ -40,6 +40,9 @@ const SplashScreen = () => {
 
     if (progress >= 75) {
       controls.start({ opacity: 0, scale: 1.5 });
+    }
+    if (progress >= 40) {
+      sliderControls.start({ scaleX: 1.5 });
     }
     if (progress >= 100) {
       clearInterval(interval);
@@ -59,6 +62,20 @@ const SplashScreen = () => {
       animate={controls}
       transition={{ duration: 0.5 }}
     >
+      <motion.div
+        initial={{
+          opacity: 1,
+          scaleX: 0,
+          zIndex: 9999,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+        }}
+        animate={sliderControls}
+        transition={{ duration: 1 }}
+        style={{ height: "100vh", backgroundColor: "white" }}
+      ></motion.div>
       <ContentWrapper>
         <Spinner
           animation="border"
