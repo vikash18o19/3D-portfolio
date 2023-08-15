@@ -38,34 +38,38 @@ const SplashScreen = () => {
       setProgress((prevProgress) => prevProgress + 1);
     }, 20);
 
+    if (progress >= 75) {
+      controls.start({ opacity: 0, scale: 1.5 });
+    }
     if (progress >= 100) {
       clearInterval(interval);
       setLoading(false);
-      controls.start({ opacity: 0, scale: 1.5 });
     }
 
     return () => clearInterval(interval);
   }, [progress, controls]);
 
+  if (!loading) {
+    return null; // Hide the splash screen when not loading
+  }
+
   return (
     <StyledSplashScreen
       initial={{ opacity: 1, scale: 1 }}
       animate={controls}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      {loading ? (
-        <ContentWrapper>
-          <Spinner
-            animation="border"
-            variant="light"
-            style={{
-              width: "10vw",
-              height: "10vw",
-            }}
-          />
-          <ProgressText>{progress}%</ProgressText>
-        </ContentWrapper>
-      ) : null}
+      <ContentWrapper>
+        <Spinner
+          animation="border"
+          variant="light"
+          style={{
+            width: "10vw",
+            height: "10vw",
+          }}
+        />
+        <ProgressText>{progress}%</ProgressText>
+      </ContentWrapper>
     </StyledSplashScreen>
   );
 };

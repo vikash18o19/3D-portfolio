@@ -35,6 +35,7 @@ const MobileWho = () => {
   ]);
 
   const [ref, inView] = useInView({ triggerOnce: true }); // Initialize useInView hook
+
   const handleDownload = async () => {
     const resumeDownloadLink =
       "https://sharito-backend-9wnyh.ondigitalocean.app/download/resume";
@@ -55,6 +56,7 @@ const MobileWho = () => {
         console.error("Error downloading resume:", error);
       });
   };
+
   return (
     <div
       style={{
