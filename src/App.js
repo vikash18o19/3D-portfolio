@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MobileWho from "./components/MobileView/WhoMobile";
 import SplashScreen from "./components/SplashScreen";
+import GlassCube from "./components/Cube";
 
 const Container = styled.div`
   /* scroll-snap-type: y mandatory; */
@@ -87,6 +88,7 @@ function App() {
       <MobileWho />
       <Works setOverflow={setOverflow} />
       <Contact />
+      {/* <GlassCube /> */}
     </Container>
   );
 }

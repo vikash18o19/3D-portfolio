@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
 
+import GlassCube from "./Cube";
+
 const Section = styled(motion.div)`
   height: 100vh;
   display: flex;
@@ -130,7 +132,7 @@ const Hero = () => {
             color: currentProgressColor,
           }}
         >
-          {particles.map((particle, index) => (
+          {/* {particles.map((particle, index) => (
             <Particle
               key={index}
               style={{
@@ -140,7 +142,7 @@ const Hero = () => {
                 height: `${particle.size}px`,
               }}
             />
-          ))}
+          ))} */}
           <Left>
             <Title
               style={{
@@ -175,6 +177,14 @@ const Hero = () => {
             >
               Scroll Down to know more about me
             </Desc>
+            <div
+              style={{
+                // left: "50%", // Center horizontally
+                zIndex: 100,
+              }}
+            >
+              <GlassCube />
+            </div>
           </Left>
           {/* <motion.div
             style={{
