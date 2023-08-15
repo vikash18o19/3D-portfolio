@@ -6,6 +6,7 @@ import Works from "./components/Works";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MobileWho from "./components/MobileView/WhoMobile";
+import SplashScreen from "./components/SplashScreen";
 
 const Container = styled.div`
   /* scroll-snap-type: y mandatory; */
@@ -81,6 +82,7 @@ function App() {
   }, [overflow]);
   return (
     <Container>
+      <SplashScreen />
       <Hero />
       <MobileWho />
       <Works setOverflow={setOverflow} />

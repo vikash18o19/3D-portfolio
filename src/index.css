@@ -19,6 +19,7 @@
   
   @media (max-width: 767px) {
     .tech-icons {
+      font-size: 2em !important;
       margin: 10px !important;
     }
   }
