@@ -39,10 +39,10 @@ const SplashScreen = () => {
     }, 20);
 
     if (progress >= 75) {
-      controls.start({ opacity: 0, scale: 1.5 });
+      controls.start({ opacity: 0, scale: 1 });
     }
-    if (progress >= 40) {
-      sliderControls.start({ scaleX: 1.5 });
+    if (progress >= 90) {
+      sliderControls.start({ opacity: 0, scaleX: 1.5 });
     }
     if (progress >= 100) {
       clearInterval(interval);
@@ -70,11 +70,11 @@ const SplashScreen = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: "100%",
+          width: "100vw",
         }}
         animate={sliderControls}
-        transition={{ duration: 1 }}
-        style={{ height: "100vh", backgroundColor: "white" }}
+        transition={{ duration: 0.5 }}
+        style={{ height: "100vh", backgroundColor: "gray" }}
       ></motion.div>
       <ContentWrapper>
         <Spinner
