@@ -80,14 +80,13 @@ const MobileWho = () => {
       </Row>
       <Row>
         <Col style={{ color: "white" }}>
-          <div className="d-flex justify-content-center flex-wrap">
+          <div className="d-flex justify-content-center flex-wrap flex-">
             {skills.map((skill, index) => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: -100 }}
+                  initial={{ y: -100 }}
                   animate={{
-                    opacity: inView ? 1 : 0,
                     y: inView ? 0 : -50,
                     scale: inView ? 1.1 : 1, // Adding scale animation
                   }}
@@ -101,10 +100,21 @@ const MobileWho = () => {
                   className="d-flex justify-content-center align-items-center m-2 tech-icons"
                   // Apply the ref
                 >
-                  <div className="p-2">{skill.icon}</div>
-                  {/* <div className="p-2" style={{ marginRight: "10px" }}>
-                    {skill.name}
-                  </div> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                    }}
+                  >
+                    <div className="p-2">{skill.icon}</div>
+                    <div
+                      className="p-2"
+                      style={{ marginRight: "10px", fontSize: "1rem" }}
+                    >
+                      {skill.name}
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -121,7 +131,7 @@ const MobileWho = () => {
         }}
         initial={{ scale: 1 }}
         animate={{
-          scale: [1, 1.08, 1],
+          scale: [1, 1.02, 1],
           transition: { repeat: Infinity, duration: 1 },
         }}
         whileHover={{ scale: 1.1 }}
