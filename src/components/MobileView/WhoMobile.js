@@ -19,7 +19,7 @@ import { SiNextdotjs } from "react-icons/si";
 import { TbBrandFlutter, TbSql } from "react-icons/tb";
 import MobileAbout from "./AboutMobile";
 
-const MobileWho = () => {
+const MobileWho = ({ setOverflow }) => {
   const [skills, setSkills] = useState([
     { name: "C++", icon: <CgCPlusPlus /> },
     { name: "HTML", icon: <DiHtml5 /> },
@@ -70,7 +70,7 @@ const MobileWho = () => {
       <div id="stars" />
       <div id="stars2" />
       <div id="stars3" />
-      <MobileAbout />
+      <MobileAbout setOverflow={setOverflow} />
       <Row style={{ marginTop: "5vh", marginBottom: "3vh" }}>
         <Col ref={ref}>
           <h1 className="text-center" style={{ color: "white" }}>

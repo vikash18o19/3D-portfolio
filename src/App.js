@@ -32,6 +32,7 @@ function App() {
   const bodyStyle = document.body.style;
   const [overflow, setOverflow] = useState(true);
   useEffect(() => {
+    console.log("overflow", overflow);
     bodyStyle.overflowY = overflow ? "auto" : "hidden";
   }, [overflow]);
   return (

@@ -56,11 +56,7 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
           <p
             style={{
               fontFamily: "Gill Sans",
-              fontSize: selectedCard.description
-                ? window.innerWidth <= 768
-                  ? "1rem"
-                  : "2rem"
-                : "inherit",
+              fontSize: window.innerWidth <= 768 ? "1rem" : "2rem",
               padding: "3rem",
               textAlign: "center",
             }}
