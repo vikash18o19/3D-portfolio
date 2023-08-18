@@ -31,11 +31,13 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
           WebkitBackdropFilter: "blur(10px)",
         }}
       >
-        <img
-          src={selectedCard.backImgSrc}
-          alt="Logo"
-          style={{ width: window.innerWidth <= 768 ? "40vh" : "35vh" }}
-        />
+        {selectedCard.backImgSrc && (
+          <img
+            src={selectedCard.backImgSrc}
+            alt="Logo"
+            style={{ width: window.innerWidth <= 768 ? "40vh" : "35vh" }}
+          />
+        )}
         <p
           style={{
             fontFamily: "Gill Sans",
@@ -50,6 +52,22 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
         >
           {selectedCard.description}
         </p>
+        {selectedCard.InvolvedTech && (
+          <p
+            style={{
+              fontFamily: "Gill Sans",
+              fontSize: selectedCard.description
+                ? window.innerWidth <= 768
+                  ? "1rem"
+                  : "2rem"
+                : "inherit",
+              padding: "3rem",
+              textAlign: "center",
+            }}
+          >
+            Involved Tech: {selectedCard.InvolvedTech}
+          </p>
+        )}
         <div style={{ display: "flex", padding: "2rem", gap: "2rem" }}>
           <button
             onClick={() => {
@@ -69,24 +87,26 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
           >
             Close
           </button>
-          <button
-            onClick={() => {
-              window.location.href = selectedCard.link;
-              setOverflow(true);
-            }}
-            style={{
-              width: "5rem",
-              height: "2rem",
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "10px",
-              border: "none",
-              outline: "none",
-              cursor: "pointer",
-            }}
-          >
-            View
-          </button>
+          {selectedCard.link && (
+            <button
+              onClick={() => {
+                window.location.href = selectedCard.link;
+                setOverflow(true);
+              }}
+              style={{
+                width: "5rem",
+                height: "2rem",
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                cursor: "pointer",
+              }}
+            >
+              View
+            </button>
+          )}
         </div>
       </div>
     </Card>

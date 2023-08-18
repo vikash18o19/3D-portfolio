@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
 
-import GlassCube from "./Cube";
+// import EarthCanvas from "./Cube";
 
 const Section = styled(motion.div)`
   height: 100vh;
@@ -177,14 +177,6 @@ const Hero = () => {
             >
               Scroll Down to know more about me
             </Desc>
-            <div
-              style={{
-                // left: "50%", // Center horizontally
-                zIndex: 100,
-              }}
-            >
-              <GlassCube />
-            </div>
           </Left>
           {/* <motion.div
             style={{
