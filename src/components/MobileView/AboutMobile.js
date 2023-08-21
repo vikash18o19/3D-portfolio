@@ -81,8 +81,8 @@ const MobileAbout = ({ setOverflow }) => {
               padding: "0.5rem",
               margin: "0.5rem",
               borderRadius: "5px",
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(255, 255, 255, 0.25)",
+              backdropFilter: "blur(2px)",
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
               cursor: "pointer",
             }}
             onClick={() => {

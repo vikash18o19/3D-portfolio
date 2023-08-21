@@ -18,7 +18,8 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
     <Card>
       <div
         style={{
-          width: window.innerWidth <= 768 ? "80vw" : "50vw",
+          width: window.innerWidth <= 768 ? "80%" : "50%",
+          // width: window.innerWidth <= 768 ? "80vw" : "50vw",
           height: "70vh",
           backgroundColor: "white",
           borderRadius: "20px",
@@ -41,11 +42,7 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
         <p
           style={{
             fontFamily: "Gill Sans",
-            fontSize: selectedCard.description
-              ? window.innerWidth <= 768
-                ? "1rem"
-                : "2rem"
-              : "inherit",
+            fontSize: window.innerWidth >= 768 ? "1rem" : "1rem",
             padding: "3rem",
             textAlign: "center",
           }}
@@ -56,12 +53,13 @@ const BigCard = ({ setIsCardActive, selectedCard, setOverflow }) => {
           <p
             style={{
               fontFamily: "Gill Sans",
-              fontSize: window.innerWidth <= 768 ? "1rem" : "2rem",
+              fontSize: window.innerWidth <= 768 ? "1rem" : "1rem",
               padding: "3rem",
+              color: "black",
               textAlign: "center",
             }}
           >
-            Involved Tech: {selectedCard.InvolvedTech}
+            Involved Tech:{"    "} {selectedCard.InvolvedTech}
           </p>
         )}
         <div style={{ display: "flex", padding: "2rem", gap: "2rem" }}>
