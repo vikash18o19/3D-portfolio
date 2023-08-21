@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import "./stars.scss";
+import { NeuralNet } from "./NeuralNet";
 
 // import EarthCanvas from "./Cube";
 
@@ -177,6 +178,7 @@ const Hero = () => {
             >
               Scroll Down to know more about me
             </Desc>
+            <NeuralNet />
           </Left>
           {/* <motion.div
             style={{

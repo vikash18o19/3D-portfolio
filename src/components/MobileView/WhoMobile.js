@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiJavascript1,
@@ -136,14 +137,17 @@ const MobileWho = ({ setOverflow }) => {
         }}
         whileHover={{ scale: 1.1 }}
       >
-        <Button
-          variant="outline-dark"
-          onClick={handleDownload}
-          className="btn-lg"
-          style={{ width: "15rem", color: "white", borderColor: "white" }}
-        >
-          Download Resume
-        </Button>
+        <Row>
+          <Link to="/resume">
+            <Button
+              variant="outline-dark"
+              className="btn-lg"
+              style={{ width: "15rem", color: "white", borderColor: "white" }}
+            >
+              View Resume
+            </Button>
+          </Link>
+        </Row>
       </motion.div>
     </div>
   );

@@ -10,6 +10,7 @@ import BlogPage from "./components/Blog/BlogPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlassNavbar from "./components/Navbar";
+import Resume from "./components/Resume/Resume";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/resume" element={<Resume />} />
       </Routes>
     </Router>
   );
