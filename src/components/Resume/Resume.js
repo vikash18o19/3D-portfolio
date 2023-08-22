@@ -16,7 +16,7 @@ function Resume() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black", minHeight: "100vh" }}>
       <div id="stars" />
       <div id="stars2" />
       <div id="stars3" />
