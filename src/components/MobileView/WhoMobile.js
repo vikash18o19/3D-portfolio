@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../stars.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -21,6 +21,32 @@ import { TbBrandFlutter, TbSql } from "react-icons/tb";
 import MobileAbout from "./AboutMobile";
 
 const MobileWho = ({ setOverflow }) => {
+  const [acceleration, setAcceleration] = useState({ x: 0, y: 0, z: 0 });
+
+  useEffect(() => {
+    // Add an event listener to listen for device motion events
+    const handleMotion = (event) => {
+      const { accelerationIncludingGravity } = event;
+      setAcceleration({
+        x: accelerationIncludingGravity.x,
+        y: accelerationIncludingGravity.y,
+        z: accelerationIncludingGravity.z,
+      });
+      console.log(accelerationIncludingGravity);
+    };
+
+    window.addEventListener("devicemotion", handleMotion);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("devicemotion", handleMotion);
+    };
+  }, []);
+  const calculateParallax = (axis, factor) => {
+    // Calculate the parallax effect based on the accelerometer data
+    return `${axis * factor}px`;
+  };
+
   const [skills, setSkills] = useState([
     { name: "C++", icon: <CgCPlusPlus /> },
     { name: "HTML", icon: <DiHtml5 /> },
@@ -81,7 +107,17 @@ const MobileWho = ({ setOverflow }) => {
       </Row>
       <Row>
         <Col style={{ color: "white" }}>
-          <div className="d-flex justify-content-center flex-wrap flex-">
+          <div
+            className="d-flex justify-content-center flex-wrap flex-"
+            style={{
+              width: "100%",
+              height: "100%",
+              transform: `translate(
+            ${calculateParallax(acceleration.x, 10)},
+            ${calculateParallax(acceleration.y, 10)}
+          )`,
+            }}
+          >
             {skills.map((skill, index) => {
               return (
                 <motion.div
