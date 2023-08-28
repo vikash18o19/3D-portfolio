@@ -24,7 +24,6 @@ const MobileWho = ({ setOverflow }) => {
   const [acceleration, setAcceleration] = useState({ x: 0, y: 0, z: 0 });
 
   useEffect(() => {
-    // Add an event listener to listen for device motion events
     const handleMotion = (event) => {
       const { accelerationIncludingGravity } = event;
       setAcceleration({
@@ -37,13 +36,11 @@ const MobileWho = ({ setOverflow }) => {
 
     window.addEventListener("devicemotion", handleMotion);
 
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("devicemotion", handleMotion);
     };
   }, []);
   const calculateParallax = (axis, factor) => {
-    // Calculate the parallax effect based on the accelerometer data
     return `${axis * factor}px`;
   };
 
@@ -113,8 +110,8 @@ const MobileWho = ({ setOverflow }) => {
               width: "100%",
               height: "100%",
               transform: `translate(
-            ${calculateParallax(acceleration.x, 10)},
-            ${calculateParallax(acceleration.y, 10)}
+            ${calculateParallax(acceleration.x, -1.3)},
+            ${calculateParallax(acceleration.y, 1.3)}
           )`,
             }}
           >
@@ -122,9 +119,9 @@ const MobileWho = ({ setOverflow }) => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ y: -100 }}
+                  // initial={{ y: -100 }}
                   animate={{
-                    y: inView ? 0 : -50,
+                    // y: inView ? 0 : -50,
                     scale: inView ? 1.1 : 1, // Adding scale animation
                   }}
                   // exit={{ opacity: 0, y: 50 }}
