@@ -49,6 +49,9 @@ const MobileAbout = ({ setOverflow }) => {
           }}
         >
           <p style={{ fontSize: "1.5rem" }} className="text-center">
+            Hey there Vikash from this side..
+          </p>
+          <p style={{ fontSize: "1.5rem" }} className="text-center">
             <TypeAbout />
           </p>
         </Col>
